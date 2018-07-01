@@ -1,0 +1,55 @@
+.Header {
+  background: rgb(58, 62, 100);
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.Nav {
+  display: flex;
+  height: 100%;
+}
+
+.Nav div {
+  margin-right: 20px;
+  color: white;
+  font-size: 1.2rem;
+  transition: 0.2s;
+  cursor: pointer;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+}
+
+.Nav div:hover {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.Nav div.active {
+  color: rgba(255, 255, 255, 1);
+
+  border-bottom: 5px solid rgb(207, 70, 71);
+}
+
+.Header button {
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  background: rgb(207, 70, 71);
+  color: white;
+  box-shadow: 0 0 8px rgb(207, 70, 71);
+  transition: 0.2s;
+  padding: 5px 15px;
+  font-family: inherit;
+  /*border-radius: 4px;*/
+}
+
+.Header button:hover {
+  box-shadow: 0 0 8px 2px rgb(207, 70, 71);
+  color: rgba(255, 255, 255, 0.75);
+}

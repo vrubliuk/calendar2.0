@@ -12,14 +12,12 @@ class Header extends Component {
       activeTab: tab
     });
   };
+
   render() {
     const tabs = this.state.tabs.map(tab => (
-      <span
-        className={tab === this.state.activeTab ? "active" : ""}
-        onClick={this.activateTab.bind(this, tab)}
-      >
+      <div className={tab === this.state.activeTab ? "active" : null} onClick={this.activateTab.bind(this, tab)}>
         {tab}
-      </span>
+      </div>
     ));
     return (
       <header className="Header">
