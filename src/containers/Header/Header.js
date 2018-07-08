@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./Header.css";
+import Navigation from "../../components/Navigation/Navigation";
 
 class Header extends Component {
   state = {
@@ -7,21 +8,10 @@ class Header extends Component {
     activeTab: "Calendar 2.0",
     isAuthorized: false
   };
-  activateTab = tab => {
-    this.setState({
-      activeTab: tab
-    });
-  };
-
   render() {
-    const tabs = this.state.tabs.map(tab => (
-      <div className={tab === this.state.activeTab ? "active" : null} onClick={this.activateTab.bind(this, tab)}>
-        {tab}
-      </div>
-    ));
     return (
       <header className="Header">
-        <nav className="Nav">{tabs}</nav>
+        <Navigation />
         <button>{this.state.isAuthorized ? "Log out" : "Log in"}</button>
       </header>
     );
