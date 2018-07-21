@@ -1,26 +1,44 @@
-import React, { Component } from "react";
-import "./Main.css";
+// import React, { Component } from "react";
+import React from "react";
 import Calendar from "../Calendar/Calendar.jsx";
 import Editor from "../Editor/Editor.jsx";
 import Settings from "../Settings/Settings.jsx";
 import Authentication from "../Authentication/Authentication.jsx";
-import { Route, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect, withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 
-class Main extends Component {
-  state = {
-    isAuthorized: false
+// class Main extends Component {
+//   render() {
+//     console.log(this.props.authorized)
+//     const x = this.props.authorized
+
+//     return (
+//       <React.Fragment>
+//         <Route exact path="/" component={Calendar} />
+//         <Route exact path="/editor" render={() => x ? <Editor /> : <Redirect to="/authentication" />}/>
+//         <Route exact path="/settings" render={() => x ? <Settings /> : <Redirect to="/authentication" />}/>
+//         <Route exact path="/authentication" component={Authentication} />
+//       </React.Fragment>
+//     );
+//   }
+// }
+
+const Main = ({ authorized }) => {
+  return (
+    <Switch>
+      <Route exact path="/" component={Calendar} />
+      <Route exact path="/editor" render={() => (authorized ? <Editor /> : <Redirect to="/authentication" />)} />
+      <Route exact path="/settings" render={() => (authorized ? <Settings /> : <Redirect to="/authentication" />)} />
+      <Route exact path="/authentication" component={Authentication} />
+      <Redirect to="/" />
+    </Switch>
+  );
+};
+
+const mapStateToProps = ({ authorized }) => {
+  return {
+    authorized
   };
+};
 
-  render() {
-    return (
-      <React.Fragment>
-        <Route exact path="/" component={Calendar} />
-        <Route exact path="/editor" render={() => this.state.isAuthorized ? <Editor /> : <Redirect to="/authentication" />}/>
-        <Route exact path="/settings" render={() => this.state.isAuthorized ? <Settings /> : <Redirect to="/authentication" />}/>
-        <Route exact path="/authentication" component={Authentication} />
-      </React.Fragment>
-    );
-  }
-}
-
-export default Main;
+export default withRouter(connect(mapStateToProps)(Main));

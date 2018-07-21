@@ -1,29 +1,29 @@
-import React, { Component } from "react";
+import React from "react";
 import "./Header.css";
 import Navigation from "../../components/Navigation/Navigation.jsx";
-import {withRouter} from "react-router-dom";
-import DatePicker from "../../components/DatePicker/DatePicker"
+import { withRouter } from "react-router-dom";
+import DatePicker from "../../components/DatePicker/DatePicker";
+import { connect } from "react-redux";
 
-class Header extends Component {
-  state = {
-    isAuthorized: false
+const Header = ({ location, history, authorized }) => {
+  const currentRoute = location.pathname;
+  const datePicker = currentRoute === "/" || currentRoute === "/editor" ? <DatePicker /> : null;
+
+  return (
+    <header className="Header">
+      <Navigation />
+      {datePicker}
+      <button className="" onClick={() => history.push("/authentication")}>
+        {authorized ? "Log out" : "Log in"}
+      </button>
+    </header>
+  );
+};
+
+const mapStateToProps = ({ authorized }) => {
+  return {
+    authorized
   };
+};
 
-  handleClickAuthButton = () => {
-    this.props.history.push('/authentication')
-  };
-
-  render() {
-    return (
-      <header className="Header">
-        <Navigation />
-        <DatePicker />
-        <button className="" onClick={this.handleClickAuthButton}>
-          {this.state.isAuthorized ? "Log out" : "Log in"}
-        </button>
-      </header>
-    );
-  }
-}
-
-export default withRouter(Header);
+export default withRouter(connect(mapStateToProps)(Header));
