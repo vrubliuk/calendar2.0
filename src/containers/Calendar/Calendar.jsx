@@ -1,15 +1,24 @@
-import React, { Component } from "react";
+import React from "react";
 import "./Calendar.css";
 import CompactView from "../../components/CompactView/CompactView";
+import Details from "../../components/Details/Details";
+import { connect } from "react-redux";
 
-class Calendar extends Component {
-  render() {
-    return (
-      <div className="Calendar">
-        <CompactView />
-      </div>
-    );
-  }
-}
+const Calendar = ({ hoveredDayId }) => {
+  const details = hoveredDayId ? <Details /> : null;
 
-export default Calendar;
+  return (
+    <div className="Calendar">
+      <CompactView />
+      {details}
+    </div>
+  );
+};
+
+const mapStateToProps = ({ hoveredDayId }) => {
+  return {
+    hoveredDayId
+  };
+};
+
+export default connect(mapStateToProps)(Calendar);

@@ -1,0 +1,43 @@
+.Details {
+  position: absolute;
+  bottom: 60px;
+  right: 60px;
+}
+.Details__Item {
+  width: 400px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  padding: 20px;
+}
+/* .Details__Item:first-child {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.Details__Item:last-child {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+} */
+
+.Details__Item-ConfirmedDayOff {
+  background: rgb(130, 140, 91);
+}
+.Details__Item-PendingDayOff {
+  background: rgb(123, 92, 68);
+  background: rgba(195, 154, 78, 1);
+}
+.Details__Item-MorningShift,
+.Details__Item-SharedInbox,
+.Details__Item-Audit {
+  background: rgb(58, 62, 100);
+  background: rgb(207, 70, 71);
+  background: rgba(195, 154, 78, 1);
+  background: rgb(123, 92, 68);
+}
+
+.Details__Item-WarningMessage {
+  justify-content: center;
+  background: rgb(207, 70, 71);
+}

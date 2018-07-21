@@ -21,13 +21,11 @@ const initialState = {
     },
     "2018.7.19":{
       confirmedDayOff: "Uliana",
-  
       morningShift: "Oksana",
       sharedInbox: "Yaryna",
       audit: 'Nazar'
     },
     "2018.7.3":{
-    
       pendingDayOff: "Yaryna",
       morningShift: "Oksana",
       sharedInbox: "Yaryna",

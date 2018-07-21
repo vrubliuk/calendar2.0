@@ -1,9 +1,9 @@
 .Day {
-  height: 100px;
-  width: 100px;
-  margin: 5px;
+  height: 110px;
+  width: 110px;
   padding: 5px;
   position: relative;
+  border: 5px solid white;
 }
 
 .Day-Working {
@@ -79,6 +79,6 @@
   border-bottom: 12px solid rgba(195, 154, 78, 1);
   /* border-right: 12px solid rgb(130, 140, 91);
   border-bottom: 12px solid rgb(130, 140, 91); */
-  border-right: 12px solid rgb(123, 92, 68);
-  border-bottom: 12px solid rgb(123, 92, 68);
+  /* border-right: 12px solid rgb(123, 92, 68);
+  border-bottom: 12px solid rgb(123, 92, 68); */
 }
