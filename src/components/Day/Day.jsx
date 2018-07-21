@@ -9,6 +9,8 @@ const Day = ({ id, database, handleHover }) => {
   const day = id.split(".")[2];
   const dayIndexInWeek = new Date(year, month, day).getDay();
   const dayType = dayIndexInWeek === 0 || dayIndexInWeek === 6 ? "Day-Weekend" : "Day-Working";
+  const onMouseOver = dayType === "Day-Working" ? handleHover.bind(this, id) : null;
+  const onMouseOut = dayType === "Day-Working" ? handleHover.bind(this, null) : null;
   const todayId = `${new Date().getFullYear()}.${new Date().getMonth() + 1}.${new Date().getDate()}`;
   const todayIndicator =
     id === todayId ? (
@@ -20,7 +22,7 @@ const Day = ({ id, database, handleHover }) => {
   const confirmedDayOffIndicator = id in database && "confirmedDayOff" in database[id] ? <div className="Day__DayOffIndicator Day__ConfirmedDayOffIndicator" /> : null;
   const pendingDayOffIndicator = id in database && "pendingDayOff" in database[id] ? <div className="Day__DayOffIndicator Day__PendingDayOffIndicator" /> : null;
   return (
-    <div className={`Day ${dayType}`} onMouseOver={handleHover.bind(this, id)} onMouseOut={handleHover.bind(this, null)}>
+    <div className={`Day ${dayType}`} onMouseOver={onMouseOver} onMouseOut={onMouseOut}>
       {day}
       {todayIndicator}
       {confirmedDayOffIndicator}

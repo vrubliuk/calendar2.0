@@ -20,6 +20,7 @@
 .Day__Pointer {
   position: absolute;
   background: rgb(207, 70, 71);
+  background: rgb(123, 92, 68);
   top: 0;
   bottom: 0;
   left: 0;
@@ -40,7 +41,7 @@
   right: 0;
   background: rgb(58, 62, 100);
   color: white;
-  z-index: 10;
+  z-index: 2;
 }
 
 .Day__TodayIndicator > img {
@@ -56,15 +57,17 @@
   position: absolute;
   bottom: 0;
   right: 0;
-  z-index: 9;
+  z-index: 1;
 }
 
 .Day__ConfirmedDayOffIndicator {
   border: 25px solid transparent;
   width: 50px;
   height: 50px;
-  border-right: 25px solid rgb(130, 140, 91);
-  border-bottom: 25px solid rgb(130, 140, 91);
+  /* border-right: 25px solid rgb(130, 140, 91);
+  border-bottom: 25px solid rgb(130, 140, 91); */
+  border-right: 25px solid #6a8759;
+  border-bottom: 25px solid #6a8759;
   /* border-right: 25px solid rgb(123, 92, 68);
   border-bottom: 25px solid rgb(123, 92, 68); */
   /* border-right: 25px solid rgb(195,154,78);
