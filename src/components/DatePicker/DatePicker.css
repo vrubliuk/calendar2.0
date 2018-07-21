@@ -12,6 +12,7 @@
 
 .DatePicker button {
   width: 40px;
+  z-index: 1;
 }
 
 .DatePicker div {
