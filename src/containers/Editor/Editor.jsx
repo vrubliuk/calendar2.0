@@ -1,9 +1,14 @@
-import React, {Component} from "react";
-import './Editor.css'
+import React, { Component } from "react";
+import "./Editor.css";
+import ExtendedView from "../../components/ExtendedView/ExtendedView";
 
 class Editor extends Component {
   render() {
-    return <div>Editor</div>;
+    return (
+      <div className="Editor">
+        <ExtendedView />
+      </div>
+    );
   }
 }
 
