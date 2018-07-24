@@ -1,0 +1,66 @@
+.ExtendedView__Container {
+  height: 100%;
+  width: 1020px;
+  overflow: hidden;
+
+}
+
+.ExtendedView {
+  display: flex;
+  height: 100%;
+  width: 1037px;
+  overflow-x: hidden;
+}
+
+.ExtendedView__Header {
+  display: flex;
+  position: absolute;
+  z-index: 2;
+  width: 1020px;
+
+}
+.ExtendedView__Header__Column, .ExtendedView__Body__Column {
+  display: flex;
+  margin: 0 5px;
+  flex-wrap: wrap;
+}
+
+.ExtendedView__Header__Item {
+  color: white;
+  height: 30px;
+  padding: 0 2.5px;
+  border: 2.5px solid white;
+  /* line-height: 25px; */
+}
+
+.ExtendedView__Header__Month {
+  background: rgb(58, 62, 100);
+  width: 110px;
+}
+
+.ExtendedView__Header__Days {
+  background: rgb(207, 70, 71); 
+  width: 55px;
+}
+
+.ExtendedView__Header__Details {
+  background: rgb(58, 62, 100);
+  width: 165px;
+}
+.ExtendedView__Body {
+  display: flex;
+  margin-top: 35px;
+  width: 1020px;
+}
+
+.ExtendedView__Body__Column-Month {
+  width: 110px;
+}
+
+.ExtendedView__Body__Column-Days {
+  width: 385px;
+}
+
+.ExtendedView__Body__Column-Details {
+  width: 495px;
+}

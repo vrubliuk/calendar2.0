@@ -1,4 +1,10 @@
-.Placeholder {
+.Placeholder-Day {
   width: 110px;
   height: 110px;
+}
+
+.Placeholder-Day-Small {
+  width: 55px;
+  height: 55px;
+  background: grey;
 }

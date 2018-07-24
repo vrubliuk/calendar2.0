@@ -3,7 +3,7 @@ import "./Day.css";
 import { connect } from "react-redux";
 import todayIconPath from "../../assets/today.png";
 
-const Day = ({ id, database, handleHover }) => {
+const Day = ({ id, type, database, handleHover }) => {
   const year = id.split(".")[0];
   const month = +id.split(".")[1] - 1;
   const day = id.split(".")[2];
@@ -22,7 +22,7 @@ const Day = ({ id, database, handleHover }) => {
   const confirmedDayOffIndicator = id in database && "confirmedDayOff" in database[id] ? <div className="Day__DayOffIndicator Day__ConfirmedDayOffIndicator" /> : null;
   const pendingDayOffIndicator = id in database && "pendingDayOff" in database[id] ? <div className="Day__DayOffIndicator Day__PendingDayOffIndicator" /> : null;
   return (
-    <div className={`Day ${dayType}`} onMouseOver={onMouseOver} onMouseOut={onMouseOut}>
+    <div className={`${type} ${dayType}`} onMouseOver={onMouseOver} onMouseOut={onMouseOut}>
       {day}
       {todayIndicator}
       {confirmedDayOffIndicator}

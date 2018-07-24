@@ -11,9 +11,9 @@ const CompactView = ({ calendarDate }) => {
   const month = calendarDate.getMonth();
   const firstDayIndexInWeek = new Date(year, month, 1).getDay();
   const placeholdersQuantity = firstDayIndexInWeek ? firstDayIndexInWeek - 1 : 6;
-  const placeholders = Array.from({ length: placeholdersQuantity }, (v, i) => <Placeholder key={i} />);
+  const placeholders = Array.from({ length: placeholdersQuantity }, (v, i) => <Placeholder key={i} type="Placeholder-Day" />);
   const daysQuantity = new Date(year, month + 1, 0).getDate();
-  const days = Array.from({ length: daysQuantity }, (v, i) => <Day key={i} id={`${year}.${month + 1}.${i + 1}`} />);
+  const days = Array.from({ length: daysQuantity }, (v, i) => <Day key={i} id={`${year}.${month + 1}.${i + 1}`} type="Day" />);
 
   return (
     <div className="CompactView">
