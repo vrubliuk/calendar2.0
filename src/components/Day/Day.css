@@ -92,6 +92,7 @@
   padding: 2.5px;
   position: relative;
   border: 2.5px solid white;
+  font-size: 0.8rem;
 }
 
 .Day-Small .Day__Pointer {
@@ -102,7 +103,7 @@
   padding: 0 2.5px;
 }
 .Day-Small .Day__TodayIndicator > img {
-  padding: 0 2.5px;
+  padding: 0;
 }
 
 .Day-Small .Day__ConfirmedDayOffIndicator {

@@ -17,7 +17,7 @@
   position: absolute;
   z-index: 2;
   width: 1020px;
-
+  font-size: 0.9rem;
 }
 .ExtendedView__Header__Column, .ExtendedView__Body__Column {
   display: flex;
