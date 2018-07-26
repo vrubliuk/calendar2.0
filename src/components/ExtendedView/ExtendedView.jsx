@@ -46,9 +46,11 @@ const ExtendedView = ({ editorDate }) => {
       dayIds.push(id);
       if (day === 1) {
         const monthName = new Date(year, month, day).toLocaleString("en-US", { month: "long" });
+        // console.log(dayIds.length % 7)
+        const index = dayIds.length % 7 ? Math.floor(dayIds.length / 7) : dayIds.length / 7 - 1;
         monthNamesAndIndexes.push({
           month: monthName,
-          index: Math.floor(dayIds.length / 7)
+          index: index
         });
       }
     }

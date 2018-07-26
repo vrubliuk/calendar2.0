@@ -32,7 +32,8 @@ const initialState = {
       sharedInbox: "Yaryna",
       audit: "Nazar"
     }
-  }
+  },
+  employees: ["Yaryna", "Oksana", "Uliana", "Nazar"]
 };
 
 const reducer = (state = initialState, action) => {
@@ -61,6 +62,19 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         editorDate: new Date(state.editorDate.setFullYear(state.editorDate.getFullYear() + 1))
+      };
+    case actionTypes.UPDATE_DETAIL:
+      let database = { ...state.database };
+      if(action.payload.id in database) {
+        database[action.payload.id][action.payload.type] = action.payload.name;
+      } else {
+        database[action.payload.id] = {
+          [action.payload.type]:action.payload.name
+        }
+      }
+      return {
+        ...state,
+        database
       };
     default:
       return state;
