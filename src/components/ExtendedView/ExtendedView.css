@@ -55,6 +55,7 @@
 .ExtendedView__Header__Details {
   background: rgb(123, 92, 68);
   background: rgb(207, 70, 71);
+  /* background: rgb(58, 62, 100); */
   width: 164px;
 }
 .ExtendedView__Body {
@@ -72,7 +73,7 @@
 }
 
 .ExtendedView__Body__Column-Details {
-  width: 495px;
+  width: 492px;
 }
 
 .ExtendedView__Footer {
@@ -84,7 +85,7 @@
   left: 0;
   right: 0;
   background: rgb(207, 70, 71);
-  background: rgb(58, 62, 100);
+  /* background: rgb(58, 62, 100); */
   border-top:4px solid white;
   z-index: 3;
 }

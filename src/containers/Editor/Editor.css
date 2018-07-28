@@ -3,3 +3,21 @@
   padding: 18px;
   height: calc(100% - 60px);
 }
+.Editor__EmployeesBaskets {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+}
+
+.Editor__EmployeesBaskets .Employees {
+  margin-bottom: 20px;
+}
+
+
+
+.Editor .Details {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+

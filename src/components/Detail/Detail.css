@@ -10,6 +10,7 @@
 }
 
 .Detail-Filled {
-  background: #e6e6e6;
+  /* background: #e6e6e6; */
   border: none;
+  border: 2px solid #e6e6e6;
 }

@@ -11,7 +11,7 @@
   align-items: center;
   justify-content: space-between;
   color: white;
-  padding: 20px;
+  padding: 0 20px;
   overflow: hidden;
 }
 /* .Details__Item:first-child {

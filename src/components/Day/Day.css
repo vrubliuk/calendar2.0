@@ -79,8 +79,8 @@
   border: 12px solid transparent;
   width: 24px;
   height: 24px;
-  border-right: 12px solid rgba(195, 154, 78, 1);
-  border-bottom: 12px solid rgba(195, 154, 78, 1);
+  border-right: 12px solid rgb(195, 154, 78);
+  border-bottom: 12px solid rgb(195, 154, 78);
   /* border-right: 12px solid rgb(130, 140, 91);
   border-bottom: 12px solid rgb(130, 140, 91); */
   /* border-right: 12px solid rgb(123, 92, 68);
