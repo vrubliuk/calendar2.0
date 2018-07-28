@@ -88,8 +88,8 @@ const ExtendedView = ({ editorDate }) => {
   });
 
   return (
-    <div className="ExtendedView__Container">
-      <div className="ExtendedView">
+    <div className="ExtendedView">
+      <div className="ExtendedView__InnerContainer">
         <div className="ExtendedView__Header">
           <div className="ExtendedView__Header__Column">{headerMonth}</div>
           <div className="ExtendedView__Header__Column">{headerDays}</div>
@@ -101,6 +101,7 @@ const ExtendedView = ({ editorDate }) => {
           <div className="ExtendedView__Body__Column ExtendedView__Body__Column-Details">{details}</div>
         </div>
       </div>
+      <div className="ExtendedView__Footer"></div>
     </div>
   );
 };

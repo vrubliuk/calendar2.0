@@ -1,14 +1,16 @@
-.ExtendedView__Container {
+.ExtendedView {
   height: 100%;
-  width: 1020px;
+  width: 1000px;
   overflow: hidden;
-
+  position: relative;
+  padding-bottom: 6px;
+  border-bottom: 2px solid white;
 }
 
-.ExtendedView {
+.ExtendedView__InnerContainer {
   display: flex;
   height: 100%;
-  width: 1037px;
+  width: 1017px;
   overflow-x: hidden;
 }
 
@@ -16,41 +18,49 @@
   display: flex;
   position: absolute;
   z-index: 2;
-  width: 1020px;
+  /* width: 1000px; */
   font-size: 0.9rem;
 }
-.ExtendedView__Header__Column, .ExtendedView__Body__Column {
+.ExtendedView__Header__Column,
+.ExtendedView__Body__Column {
   display: flex;
-  margin: 0 5px;
   flex-wrap: wrap;
+  margin-right: 10px;
+}
+.ExtendedView__Header__Column:last-child,
+.ExtendedView__Body__Column:last-child {
+  margin-right: 0;
 }
 
 .ExtendedView__Header__Item {
   color: white;
-  height: 30px;
-  padding: 0 2.5px;
-  border: 2.5px solid white;
+  height: 28px;
+  padding: 0 2px;
+  border: 2px solid white;
+  border-bottom: 4px solid white;
   /* line-height: 25px; */
 }
 
 .ExtendedView__Header__Month {
   background: rgb(58, 62, 100);
+  background: rgb(207, 70, 71);
   width: 110px;
 }
 
 .ExtendedView__Header__Days {
-  background: rgb(207, 70, 71); 
-  width: 55px;
+  background: rgb(207, 70, 71);
+  width: 54px;
 }
 
 .ExtendedView__Header__Details {
-  background: rgb(58, 62, 100);
-  width: 165px;
+  background: rgb(123, 92, 68);
+  background: rgb(207, 70, 71);
+  width: 164px;
 }
 .ExtendedView__Body {
   display: flex;
-  margin-top: 35px;
-  width: 1020px;
+  margin-top: 26px;
+  /* width: 1020px; */
 }
 
 .ExtendedView__Body__Column-Month {
@@ -58,9 +68,23 @@
 }
 
 .ExtendedView__Body__Column-Days {
-  width: 385px;
+  width: 378px;
 }
 
 .ExtendedView__Body__Column-Details {
   width: 495px;
+}
+
+.ExtendedView__Footer {
+  position: absolute;
+  margin: auto;
+  width: 996px;
+  height: 8px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgb(207, 70, 71);
+  background: rgb(58, 62, 100);
+  border-top:4px solid white;
+  z-index: 3;
 }

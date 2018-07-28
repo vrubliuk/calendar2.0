@@ -1,5 +1,12 @@
 .Calendar {
   position: relative;
-  padding: 60px;
+  padding: 50px;
   height: calc(100% - 60px);
+}
+
+.Calendar .Details{
+  position: absolute;
+  bottom: 60px;
+  right: 60px;
+  z-index: 3;
 }

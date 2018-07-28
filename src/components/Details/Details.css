@@ -1,8 +1,8 @@
 .Details {
-  position: absolute;
+  /* position: absolute;
   bottom: 60px;
   right: 60px;
-  z-index: 3;
+  z-index: 3; */
 }
 .Details__Item {
   width: 400px;
@@ -26,10 +26,12 @@
 .Details__Item-ConfirmedDayOff {
   /* background: rgb(130, 140, 91); */
   background: #6a8759;
+  /* background: #6aa84f; */
 }
 .Details__Item-PendingDayOff {
   /* background: rgb(123, 92, 68); */
   background: rgba(195, 154, 78, 1);
+  /* background: #f1c232; */
 }
 .Details__Item-MorningShift,
 .Details__Item-SharedInbox,
@@ -38,6 +40,8 @@
   background: rgb(207, 70, 71);
   background: rgba(195, 154, 78, 1); */
   background: rgb(123, 92, 68);
+  /* background: #a64d79; */
+  background: rgb(58, 62, 100);
 }
 
 .Details__Item-WarningMessage {

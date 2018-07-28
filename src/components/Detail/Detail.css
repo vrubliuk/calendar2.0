@@ -2,20 +2,14 @@
   background: white;
   width: 160px;
   height: 50px;
-  padding: 2.5px;
+  padding: 2px;
   position: relative;
-  border: 2.5px solid white;
   font-size: 0.8rem;
-  margin: 2.5px;
-  border: 2.5px dashed #e6e6e6;
+  margin: 2px;
+  border: 2px dashed #e6e6e6;
 }
-
-.Detail-DragOver {
-  border: 2.5px dashed #b3b3b3;
-}
-
 
 .Detail-Filled {
   background: #e6e6e6;
-  border: 2.5px solid transparent;
+  border: none;
 }
