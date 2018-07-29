@@ -71,7 +71,13 @@ const initialState = {
     
 
   },
-  chosenMondays: []
+  chosenMondays: [
+    {
+      id: "2018.7.16",
+      type: "morningShift"
+    }
+
+  ]
 };
 
 const reducer = (state = initialState, action) => {
