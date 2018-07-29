@@ -15,14 +15,14 @@ const Details = ({ hoveredDayId, database }) => {
       "confirmedDayOff" in database[hoveredDayId] ? (
         <div className="Details__Item Details__Item-ConfirmedDayOff">
           <div>Confirmed day off:</div>
-          <div>{database[hoveredDayId]["confirmedDayOff"]}</div>
+          <div>{database[hoveredDayId]["confirmedDayOff"].join(', ')}</div>
         </div>
       ) : null;
     pendingDayOffDetails =
       "pendingDayOff" in database[hoveredDayId] ? (
         <div className="Details__Item Details__Item-PendingDayOff">
           <div>Pending day off:</div>
-          <div>{database[hoveredDayId]["pendingDayOff"]}</div>
+          <div>{database[hoveredDayId]["pendingDayOff"].join(', ')}</div>
         </div>
       ) : null;
     morningShiftDetails =

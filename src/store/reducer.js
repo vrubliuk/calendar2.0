@@ -7,27 +7,32 @@ const initialState = {
   hoveredDayId: null,
   database: {
     "2018.7.16": {
-      confirmedDayOff: "Uliana",
-      pendingDayOff: "Yaryna",
+      confirmedDayOff: ["Uliana", "Oksana"],
+      pendingDayOff: ["Yaryna"],
       morningShift: "Oksana",
       sharedInbox: "Yaryna",
-      audit: "Nazar"
+      audit: "Nazar",
+      colors: {
+        morningShift: 'yellow',
+        sharedInbox: 'green',
+        audit: 'blue'
+      }
     },
     "2018.7.18": {
-      confirmedDayOff: "Uliana",
-      pendingDayOff: "Yaryna",
+      confirmedDayOff: ["Uliana", "Oksana"],
+      pendingDayOff: ["Yaryna", 'Nazar', "Oksana"],
       morningShift: "Oksana",
       sharedInbox: "Yaryna",
       audit: "Nazar"
     },
     "2018.7.19": {
-      confirmedDayOff: "Uliana",
+      
       morningShift: "Oksana",
       sharedInbox: "Yaryna",
       audit: "Nazar"
     },
     "2018.7.3": {
-      pendingDayOff: "Yaryna",
+      
       morningShift: "Oksana",
       sharedInbox: "Yaryna",
       audit: "Nazar"
