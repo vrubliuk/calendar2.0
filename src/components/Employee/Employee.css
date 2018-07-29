@@ -3,7 +3,7 @@
   padding: 0 2px;
   position: relative;
   background: white;
-  cursor: pointer;
+  cursor: grab;
   font-size: 0.8rem;
   width: 110px;
   height: 50px;

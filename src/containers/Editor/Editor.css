@@ -3,13 +3,13 @@
   padding: 18px;
   height: calc(100% - 60px);
 }
-.Editor__EmployeesBaskets {
+.Editor__Baskets {
   position: absolute;
   top: 18px;
   right: 18px;
 }
 
-.Editor__EmployeesBaskets .Employees {
+.Editor__Baskets .Basket {
   margin-bottom: 20px;
 }
 

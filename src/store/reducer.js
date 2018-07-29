@@ -33,7 +33,40 @@ const initialState = {
       audit: "Nazar"
     }
   },
-  employees: ["Yaryna", "Oksana", "Uliana", "Nazar"]
+  employees: ["Yaryna", "Oksana", "Uliana", "Nazar"],
+  colors: {
+    white: {
+      dark: "#e6e6e6",
+      light: "white"
+    },
+    yellow: {
+      dark: "#ffd966",
+      light: "#fff2cc"
+    },
+    green: {
+      dark: "#93c47d",
+      light: "#d9ead3"
+    },
+    red: {
+      dark: "#e06666",
+      light: "#f4cccc"
+    },
+    blue: {
+      dark: "#6fa8dc",
+      light: "#cfe2f3"
+    },
+    purple: {
+      dark: "#8e7cc3",
+      light: "#d9d2e9"
+    },
+    pink: {
+      dark: "#c27ba0",
+      light: "#ead1dc"
+    },
+    
+
+  },
+  chosenMondays: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -65,12 +98,12 @@ const reducer = (state = initialState, action) => {
       };
     case actionTypes.UPDATE_DETAIL:
       let database = { ...state.database };
-      if(action.payload.id in database) {
+      if (action.payload.id in database) {
         database[action.payload.id][action.payload.type] = action.payload.name;
       } else {
         database[action.payload.id] = {
-          [action.payload.type]:action.payload.name
-        }
+          [action.payload.type]: action.payload.name
+        };
       }
       return {
         ...state,

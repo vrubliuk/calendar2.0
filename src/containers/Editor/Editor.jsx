@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./Editor.css";
 import ExtendedView from "../../components/ExtendedView/ExtendedView";
-import Employees from "../../components/Employees/Employees.jsx";
+import Basket from "../../components/Basket/Basket";
 import Details from "../../components/Details/Details";
 
 class Editor extends Component {
@@ -9,10 +9,11 @@ class Editor extends Component {
     return (
       <div className="Editor">
         <ExtendedView />
-        <div className="Editor__EmployeesBaskets">
-          <Employees type="confirmedDayOff" />
-          <Employees type="pendingDayOff" />
-          <Employees type="schedule" />
+        <div className="Editor__Baskets">
+          <Basket type="confirmedDayOff" />
+          <Basket type="pendingDayOff" />
+          <Basket type="schedule" />
+          <Basket type="color" />
         </div>
         <Details />
       </div>
