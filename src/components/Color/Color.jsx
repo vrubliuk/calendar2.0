@@ -3,8 +3,10 @@ import "./Color.css";
 import Radium from "radium";
 import { connect } from "react-redux";
 
-const Color = ({ name, colors }) => {
-  const style = {
+const Color = ({ name, colors, setColor, clearChosenMondays }) => {
+
+
+  let style = {
     background: colors[name].light,
     border: `2px solid ${colors[name].dark}`,
     ":hover": {
@@ -12,17 +14,45 @@ const Color = ({ name, colors }) => {
     }
   };
 
-  return <div className="Color" style={style} />;
+
+  const handleClick = () => {
+    setColor(name)
+    clearChosenMondays()
+  }
+
+
+  // let style = {};
+  // const styleColors = {
+  //   background: colors[name].light,
+  //   border: `2px solid ${colors[name].dark}`
+  // };
+
+  // const styleHover = chosenMondays.length ? {
+  //   cursor: 'pointer',
+  //   ":hover": {
+  //     boxShadow: `0 0 8px ${colors[name].dark}`
+  //   }
+  // } : null;
+  // style = {...styleColors, ...styleHover}
+
+
+
+
+  return <div className="Color" style={style} onClick={handleClick} />;
 };
 
 const mapStateToProps = ({ colors }) => {
   return {
     colors
+    
   };
 };
 
 const mapDispatchToProps = dispatch => {
-  return {};
+  return {
+    setColor: (name) => dispatch({type: "SET_COLOR", color: name}),
+    clearChosenMondays: () => dispatch({type: "CLEAR_CHOSEN_MONDAYS"})
+  };
 };
 
 export default connect(

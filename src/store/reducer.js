@@ -13,26 +13,24 @@ const initialState = {
       sharedInbox: "Yaryna",
       audit: "Nazar",
       colors: {
-        morningShift: 'yellow',
-        sharedInbox: 'green',
-        audit: 'blue'
+        morningShift: "yellow",
+        sharedInbox: "green",
+        audit: "blue"
       }
     },
     "2018.7.18": {
       confirmedDayOff: ["Uliana", "Oksana"],
-      pendingDayOff: ["Yaryna", 'Nazar', "Oksana"],
+      pendingDayOff: ["Yaryna", "Nazar", "Oksana"],
       morningShift: "Oksana",
       sharedInbox: "Yaryna",
       audit: "Nazar"
     },
     "2018.7.19": {
-      
       morningShift: "Oksana",
       sharedInbox: "Yaryna",
       audit: "Nazar"
     },
-    "2018.7.3": {
-      
+    "2018.7.23": {
       morningShift: "Oksana",
       sharedInbox: "Yaryna",
       audit: "Nazar"
@@ -67,16 +65,13 @@ const initialState = {
     pink: {
       dark: "#c27ba0",
       light: "#ead1dc"
-    },
-    
-
+    }
   },
   chosenMondays: [
-    {
-      id: "2018.7.16",
-      type: "morningShift"
-    }
-
+    // {
+    //   id: "2018.7.16",
+    //   type: "morningShift"
+    // }
   ]
 };
 
@@ -120,6 +115,44 @@ const reducer = (state = initialState, action) => {
         ...state,
         database
       };
+
+    case actionTypes.TOGGLE_MONDAY_SELECTION:
+      let chosenMondays = [...state.chosenMondays];
+      const passedMonday = {
+        id: action.payload.id,
+        type: action.payload.type
+      };
+      const index = chosenMondays.findIndex(monday => {
+        return monday.id === passedMonday.id && monday.type === passedMonday.type;
+      });
+      index > -1 ? chosenMondays.splice(index, 1) : chosenMondays.push(passedMonday);
+      return {
+        ...state,
+        chosenMondays
+      };
+
+    case actionTypes.CLEAR_CHOSEN_MONDAYS:
+      return {
+        ...state,
+        chosenMondays: []
+      };
+
+    case actionTypes.SET_COLOR:
+      database = { ...state.database };
+      chosenMondays = [...state.chosenMondays];
+      chosenMondays.forEach(monday => {
+        monday.id in database && "colors" in database[monday.id] && monday.type in database[monday.id].colors
+          ? (database[monday.id].colors[monday.type] = action.color)
+          : (database[monday.id].colors = {
+              ...database[monday.id].colors,
+              [monday.type]: action.color
+            });
+      });
+      return {
+        ...state,
+        database
+      };
+
     default:
       return state;
   }

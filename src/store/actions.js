@@ -7,3 +7,10 @@ export const NEXT_YEAR = "NEXT_YEAR";
 export const HOVER_DAY = "HOVER_DAY"
 
 export const UPDATE_DETAIL = "UPDATE_DETAIL"
+
+export const TOGGLE_MONDAY_SELECTION = "TOGGLE_MONDAY_SELECTION"
+
+export const CLEAR_CHOSEN_MONDAYS = "CLEAR_CHOSEN_MONDAYS"
+
+export const SET_COLOR = "SET_COLOR"
+
