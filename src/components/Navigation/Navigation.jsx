@@ -14,8 +14,8 @@ class Navigation extends Component {
         path: "/editor"
       },
       {
-        name: "Settings",
-        path: "/settings"
+        name: "Employees",
+        path: "/employees"
       }
     ]
   };
