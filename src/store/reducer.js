@@ -102,20 +102,21 @@ const reducer = (state = initialState, action) => {
         ...state,
         editorDate: new Date(state.editorDate.setFullYear(state.editorDate.getFullYear() + 1))
       };
-    case actionTypes.UPDATE_DETAIL:
+    case actionTypes.UPDATE_SCHEDULE:
       let database = { ...state.database };
-      if (action.payload.id in database) {
-        database[action.payload.id][action.payload.type] = action.payload.name;
-      } else {
-        database[action.payload.id] = {
-          [action.payload.type]: action.payload.name
+      let {id, type, name} = action.payload;
+      for(let i = 0; i < 5; i++) {
+        let day = new Date(id.split('.')[0], id.split('.')[1] - 1, id.split('.')[2]);
+        day.setDate(day.getDate()+i);
+        const currentId = `${day.getFullYear()}.${day.getMonth() + 1}.${day.getDate()}`;
+        (currentId in database) ? database[currentId][type] = name : database[currentId] = {
+          [type]: name
         };
       }
       return {
         ...state,
         database
       };
-
     case actionTypes.TOGGLE_MONDAY_SELECTION:
       let chosenMondays = [...state.chosenMondays];
       const passedMonday = {

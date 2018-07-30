@@ -6,7 +6,7 @@ export const NEXT_YEAR = "NEXT_YEAR";
 
 export const HOVER_DAY = "HOVER_DAY"
 
-export const UPDATE_DETAIL = "UPDATE_DETAIL"
+export const UPDATE_SCHEDULE = "UPDATE_SCHEDULE"
 
 export const TOGGLE_MONDAY_SELECTION = "TOGGLE_MONDAY_SELECTION"
 

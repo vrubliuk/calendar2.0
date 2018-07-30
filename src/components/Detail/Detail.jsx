@@ -55,7 +55,7 @@ const mapStateToProps = ({ database, colors, chosenMondays }) => {
 };
 const mapDispatchToProps = dispatch => {
   return {
-    handleDataTransfer: (id, type, name) => dispatch({ type: "UPDATE_DETAIL", payload: { id, type, name } }),
+    handleDataTransfer: (id, type, name) => dispatch({ type: "UPDATE_SCHEDULE", payload: { id, type, name } }),
     handleMondaySelection: (id, type) => dispatch({ type: "TOGGLE_MONDAY_SELECTION", payload: { id, type } })
   };
 };
