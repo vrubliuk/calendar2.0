@@ -34,7 +34,7 @@ const Detail = ({ id, type, database, colors, chosenMondays, draggedType, handle
       e.preventDefault();
     };
     handleDrop = e => {
-      const name = e.dataTransfer.getData("text");
+      const name =  JSON.parse(e.dataTransfer.getData("text")).name;
       handleDataTransfer(id, type, name);
     };
   }

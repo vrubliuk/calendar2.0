@@ -103,8 +103,26 @@ const reducer = (state = initialState, action) => {
         ...state,
         editorDate: new Date(state.editorDate.setFullYear(state.editorDate.getFullYear() + 1))
       };
-    case actionTypes.UPDATE_SCHEDULE:
+
+    case actionTypes.UPDATE_DAYOFF:
       let database = { ...state.database };
+      let idExists = action.payload.id in database;
+      let typeExists = idExists && action.payload.type in database[action.payload.id];
+      if (typeExists) {
+        database[action.payload.id][action.payload.type].push(action.payload.name);
+      } else if (idExists) {
+        database[action.payload.id][action.payload.type] = [[action.payload.name]];
+      } else {
+        database[action.payload.id] = {
+          [action.payload.type]: [[action.payload.name]]
+        };
+      }
+      return {
+        ...state,
+        database
+      };
+    case actionTypes.UPDATE_SCHEDULE:
+      database = { ...state.database };
       let { id, type, name } = action.payload;
       for (let i = 0; i < 5; i++) {
         let day = new Date(id.split(".")[0], id.split(".")[1] - 1, id.split(".")[2]);

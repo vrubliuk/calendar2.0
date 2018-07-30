@@ -3,7 +3,7 @@ import "./Day.css";
 import { connect } from "react-redux";
 import todayIconPath from "../../assets/today.png";
 
-const Day = ({ id, type, database, draggedType, handleHover }) => {
+const Day = ({ id, type, database, draggedType, handleHover, handleDataTransfer }) => {
   const year = id.split(".")[0];
   const month = +id.split(".")[1] - 1;
   const day = id.split(".")[2];
@@ -21,8 +21,24 @@ const Day = ({ id, type, database, draggedType, handleHover }) => {
     ) : null;
   const confirmedDayOffIndicator = id in database && "confirmedDayOff" in database[id] ? <div className="Day__DayOffIndicator Day__ConfirmedDayOffIndicator" /> : null;
   const pendingDayOffIndicator = id in database && "pendingDayOff" in database[id] ? <div className="Day__DayOffIndicator Day__PendingDayOffIndicator" /> : null;
+
+
+  let handleDragOver = null;
+  let handleDrop = null;
+  if (draggedType === "confirmedDayOff" || draggedType === "pendingDayOff") {
+    handleDragOver = e => {
+      e.preventDefault();
+    };
+    handleDrop = e => {
+      const data =  JSON.parse(e.dataTransfer.getData("text"));
+      handleDataTransfer(id, data.type, data.name);
+    };
+  }
+
+
+
   return (
-    <div className={`${type} ${dayType}`} onMouseOver={onMouseOver} onMouseOut={onMouseOut}>
+    <div className={`${type} ${dayType}`} onMouseOver={onMouseOver} onMouseOut={onMouseOut} onDragOver={handleDragOver} onDrop={handleDrop}>
       {day}
       {todayIndicator}
       {confirmedDayOffIndicator}
@@ -41,7 +57,8 @@ const mapStateToProps = ({ database, draggedType }) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    handleHover: id => dispatch({ type: "HOVER_DAY", id })
+    handleHover: id => dispatch({ type: "HOVER_DAY", id }),
+    handleDataTransfer: (id, type, name) => dispatch({ type: "UPDATE_DAYOFF", payload: { id, type, name } }),
   };
 };
 

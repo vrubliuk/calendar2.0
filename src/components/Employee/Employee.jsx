@@ -19,7 +19,7 @@ const Employee = ({ name, type, setDraggedType }) => {
   }
 
   const handleDragStart = e => {
-    e.dataTransfer.setData("text", name);
+    e.dataTransfer.setData("text", JSON.stringify({name, type}) );
     e.dropEffect = "copy";
     setDraggedType(type);
   };
