@@ -3,7 +3,7 @@ import "./Day.css";
 import { connect } from "react-redux";
 import todayIconPath from "../../assets/today.png";
 
-const Day = ({ id, type, database, handleHover }) => {
+const Day = ({ id, type, database, draggedType, handleHover }) => {
   const year = id.split(".")[0];
   const month = +id.split(".")[1] - 1;
   const day = id.split(".")[2];
@@ -32,9 +32,10 @@ const Day = ({ id, type, database, handleHover }) => {
   );
 };
 
-const mapStateToProps = ({ database }) => {
+const mapStateToProps = ({ database, draggedType }) => {
   return {
-    database
+    database,
+    draggedType
   };
 };
 

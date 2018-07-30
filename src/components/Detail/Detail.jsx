@@ -2,7 +2,7 @@ import React from "react";
 import "./Detail.css";
 import { connect } from "react-redux";
 
-const Detail = ({ id, type, database, colors, chosenMondays, handleDataTransfer, handleMondaySelection }) => {
+const Detail = ({ id, type, database, colors, chosenMondays, draggedType, handleDataTransfer, handleMondaySelection }) => {
   const infoExists = id in database && type in database[id];
   const colorExists = infoExists && "colors" in database[id] && type in database[id].colors;
   const info = infoExists ? <div className="Detail__Info">{database[id][type]}</div> : null;
@@ -27,14 +27,17 @@ const Detail = ({ id, type, database, colors, chosenMondays, handleDataTransfer,
 
   const pointer = mondayIsChosen ? <div className="Detail__Pointer" style={additionalStylePointer} /> : null;
 
-  const handleDragOver = e => {
-    e.preventDefault();
-  };
-  const handleDrop = e => {
-    e.preventDefault();
-    const name = e.dataTransfer.getData("text");
-    handleDataTransfer(id, type, name);
-  };
+  let handleDragOver = null;
+  let handleDrop = null;
+  if (draggedType === "schedule") {
+    handleDragOver = e => {
+      e.preventDefault();
+    };
+    handleDrop = e => {
+      const name = e.dataTransfer.getData("text");
+      handleDataTransfer(id, type, name);
+    };
+  }
 
   const handleClick = infoExists ? handleMondaySelection.bind(this, id, type) : null;
 
@@ -46,11 +49,12 @@ const Detail = ({ id, type, database, colors, chosenMondays, handleDataTransfer,
   );
 };
 
-const mapStateToProps = ({ database, colors, chosenMondays }) => {
+const mapStateToProps = ({ database, colors, chosenMondays, draggedType }) => {
   return {
     database,
     colors,
-    chosenMondays
+    chosenMondays,
+    draggedType
   };
 };
 const mapDispatchToProps = dispatch => {

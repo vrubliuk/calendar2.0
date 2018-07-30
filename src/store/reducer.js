@@ -72,7 +72,8 @@ const initialState = {
     //   id: "2018.7.16",
     //   type: "morningShift"
     // }
-  ]
+  ],
+  draggedType: null
 };
 
 const reducer = (state = initialState, action) => {
@@ -104,14 +105,16 @@ const reducer = (state = initialState, action) => {
       };
     case actionTypes.UPDATE_SCHEDULE:
       let database = { ...state.database };
-      let {id, type, name} = action.payload;
-      for(let i = 0; i < 5; i++) {
-        let day = new Date(id.split('.')[0], id.split('.')[1] - 1, id.split('.')[2]);
-        day.setDate(day.getDate()+i);
+      let { id, type, name } = action.payload;
+      for (let i = 0; i < 5; i++) {
+        let day = new Date(id.split(".")[0], id.split(".")[1] - 1, id.split(".")[2]);
+        day.setDate(day.getDate() + i);
         const currentId = `${day.getFullYear()}.${day.getMonth() + 1}.${day.getDate()}`;
-        (currentId in database) ? database[currentId][type] = name : database[currentId] = {
-          [type]: name
-        };
+        currentId in database
+          ? (database[currentId][type] = name)
+          : (database[currentId] = {
+              [type]: name
+            });
       }
       return {
         ...state,
@@ -152,6 +155,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         database
+      };
+    case actionTypes.SET_DRAGGED_TYPE:
+      return {
+        ...state,
+        draggedType: action.payload
       };
 
     default:
