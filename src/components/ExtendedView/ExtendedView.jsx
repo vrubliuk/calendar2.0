@@ -34,7 +34,7 @@ const ExtendedView = ({ editorDate }) => {
   let monthNamesAndIndexes = [];
 
   const daysQuantityPreviousYearLastMonth = new Date(year, 1, 0).getDate();
-  for (let day = placeholdersQuantity; day > 0; day--) {
+  for (let day = placeholdersQuantity - 1; day >= 0; day--) {
     const id = `${year - 1}.12.${daysQuantityPreviousYearLastMonth - day}`;
     dayIds.push(id);
   }
@@ -101,7 +101,7 @@ const ExtendedView = ({ editorDate }) => {
           <div className="ExtendedView__Body__Column ExtendedView__Body__Column-Details">{details}</div>
         </div>
       </div>
-      <div className="ExtendedView__Footer"></div>
+      <div className="ExtendedView__Footer" />
     </div>
   );
 };
