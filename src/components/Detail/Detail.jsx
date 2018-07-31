@@ -1,6 +1,7 @@
 import React from "react";
 import "./Detail.css";
 import { connect } from "react-redux";
+import Remover from "../Remover/Remover.jsx";
 
 const Detail = ({ id, type, database, colors, chosenMondays, draggedType, handleDataTransfer, handleMondaySelection }) => {
   const infoExists = id in database && type in database[id];
@@ -40,11 +41,13 @@ const Detail = ({ id, type, database, colors, chosenMondays, draggedType, handle
   }
 
   const handleClick = infoExists ? handleMondaySelection.bind(this, id, type) : null;
+  const remover = infoExists ? <Remover type="detail" /> : null;
 
   return (
     <div className={`Detail ${info ? "Detail-Filled" : ""}`} style={additionalStyleDetail} onDragOver={handleDragOver} onDrop={handleDrop} onClick={handleClick}>
       {info}
       {pointer}
+      {remover}
     </div>
   );
 };

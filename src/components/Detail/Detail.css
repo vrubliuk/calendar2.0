@@ -30,3 +30,14 @@
   background: #e6e6e6;
   border-radius: 50%;
 }
+
+.Detail .Remover {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  display: none;
+}
+
+.Detail:hover .Remover {
+  display: flex;
+}
