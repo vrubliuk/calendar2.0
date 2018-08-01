@@ -26,7 +26,7 @@ const Day = ({ id, type, database, draggedType, handleHover, handleDataTransfer 
   ) : null;
   const confirmedDayOffIndicator = confirmedDayOffExists ? <div className="Day__DayOffIndicator Day__ConfirmedDayOffIndicator" /> : null;
   const pendingDayOffIndicator = pendingDayOffExists ? <div className="Day__DayOffIndicator Day__PendingDayOffIndicator" /> : null;
-  const remover = confirmedDayOffExists || pendingDayOffExists ? <Remover type={removerType} /> : null;
+  const remover = (confirmedDayOffExists || pendingDayOffExists) && type === "Day-Small" ? <Remover type={removerType} /> : null;
 
   const onMouseOver = dayType === "Day-Working" ? handleHover.bind(this, id) : null;
   const onMouseOut = dayType === "Day-Working" ? handleHover.bind(this, null) : null;
