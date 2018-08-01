@@ -1,6 +1,7 @@
 import React from "react";
 import "./Employees.css";
 import { connect } from "react-redux";
+import Remover from "../../components/Remover/Remover";
 
 const Employees = ({ employees }) => {
 
@@ -8,7 +9,7 @@ const Employees = ({ employees }) => {
     return (
       <div className="Employees__Item" key={i}>
         <div className="Employees__Item__Name">{name}</div>
-        <div>Remover</div>
+        <Remover type="employee"/>
       </div>
     )
   })
