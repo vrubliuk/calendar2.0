@@ -107,6 +107,12 @@
   padding: 0;
 }
 
+.Day-Small:hover .Day__TodayIndicator__Icon-Hidden {
+  display: none;
+}
+
+
+
 .Day-Small .Day__ConfirmedDayOffIndicator {
   border: 12px solid transparent;
   width: 24px;
@@ -122,6 +128,16 @@
   border-bottom: 6px solid rgba(195, 154, 78, 1);
 }
 
+.Day-Small .Remover {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  display:none;
+  z-index: 1;
+}
 
+.Day-Small:hover .Remover {
+  display: flex;
+}
 
 

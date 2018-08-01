@@ -9,9 +9,15 @@ const Remover = ({ type }) => {
     case "day":
       additionalClass = "Remover-Schedule";
       break;
+    case "today":
+      additionalClass = "Remover-Schedule Remover-Schedule-White";
+      break;
 
     case "detail":
       additionalClass = "Remover-Schedule";
+      break;
+    case "employee":
+      additionalClass = "Remover-Employee";
       break;
 
     default:
@@ -19,11 +25,14 @@ const Remover = ({ type }) => {
   }
 
   const handleClick = e => {
-    e.stopPropagation()
-  }
+    e.stopPropagation();
+  };
 
-
-  return <div className={`Remover ${additionalClass}`} onClick={handleClick}>{"\u00D7"}</div>;
+  return (
+    <div className={`Remover ${additionalClass}`} onClick={handleClick}>
+      {"\u00D7"}
+    </div>
+  );
 };
 
 const mapStateToProps = ({ colors }) => {
