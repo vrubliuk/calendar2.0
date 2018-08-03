@@ -2,8 +2,9 @@ import React from "react";
 import "./Remover.css";
 import { connect } from "react-redux";
 
-const Remover = ({ type }) => {
+const Remover = ({ type, employeeIndex, removeEmployee }) => {
   let additionalClass = "";
+  let remove = () => {};
 
   switch (type) {
     case "day":
@@ -18,6 +19,7 @@ const Remover = ({ type }) => {
       break;
     case "employee":
       additionalClass = "Remover-Employee";
+      remove = removeEmployee.bind(this, employeeIndex)
       break;
 
     default:
@@ -26,6 +28,7 @@ const Remover = ({ type }) => {
 
   const handleClick = e => {
     e.stopPropagation();
+    remove();
   };
 
   return (
@@ -41,4 +44,11 @@ const mapStateToProps = ({ colors }) => {
   };
 };
 
-export default connect(mapStateToProps)(Remover);
+const mapDispatchToProps = dispatch => {
+  return {
+    removeEmployee: (employeeIndex) => dispatch({type: 'REMOVE_EMPLOYEE', employeeIndex})
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Remover);

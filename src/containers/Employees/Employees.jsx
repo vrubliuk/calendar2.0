@@ -1,33 +1,43 @@
-import React from "react";
+import React, { Component } from "react";
 import "./Employees.css";
 import { connect } from "react-redux";
 import Remover from "../../components/Remover/Remover";
 
-const Employees = ({ employees }) => {
+class Employees extends Component {
+  state = {
+    newEmployeeName: ""
+  };
 
-  const employeesList = employees.map((name, i)=> {
-    return (
-      <div className="Employees__Item" key={i}>
-        <div className="Employees__Item__Name">{name}</div>
-        <Remover type="employee"/>
-      </div>
-    )
-  })
+  handleInput = e => {
+    const newEmployeeName = e.target.value;
+    this.setState({
+      newEmployeeName
+    });
+  };
 
-
-
-  return (
-    <div className="Employees">
-      <div className="Employees__InnerContainer">
-        <div className="Employees__Header">
-          <input type="text" placeholder="Enter name here" maxLength='25' />
-          <button>Add</button>
+  render() {
+    const employeesList = this.props.employees.map((name, i) => {
+      return (
+        <div className="Employees__Item" key={i}>
+          <div className="Employees__Item__Name">{name}</div>
+          <Remover type="employee" employeeIndex={i} />
         </div>
-        {employeesList}
+      );
+    });
+
+    return (
+      <div className="Employees">
+        <div className="Employees__InnerContainer">
+          <div className="Employees__Header">
+            <input type="text" placeholder="Enter name here" maxLength="25" value={this.state.newEmployeeName} onChange={this.handleInput} />
+            <button onClick={this.props.addEmployee.bind(this, this.state.newEmployeeName)}>Add</button>
+          </div>
+          {employeesList}
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 const mapStateToProps = ({ employees }) => {
   return {
@@ -35,7 +45,9 @@ const mapStateToProps = ({ employees }) => {
   };
 };
 const mapDispatchToProps = dispatch => {
-  return {};
+  return {
+    addEmployee: employeeName => dispatch({ type: "ADD_EMPLOYEE", employeeName })
+  };
 };
 
 export default connect(

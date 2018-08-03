@@ -121,6 +121,13 @@ const reducer = (state = initialState, action) => {
         ...state,
         database
       };
+
+    case actionTypes.REMOVE_DAYOFF:
+      return {
+        ...state,
+        database
+      };
+
     case actionTypes.UPDATE_SCHEDULE:
       database = { ...state.database };
       let { id, type, name } = action.payload;
@@ -134,6 +141,11 @@ const reducer = (state = initialState, action) => {
               [type]: name
             });
       }
+      return {
+        ...state,
+        database
+      };
+    case actionTypes.REMOVE_SCHEDULE:
       return {
         ...state,
         database
@@ -178,6 +190,23 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         draggedType: action.payload
+      };
+
+    case actionTypes.ADD_EMPLOYEE:
+      let employees = [...state.employees];
+      employees.push(action.employeeName);
+
+      return {
+        ...state,
+        employees
+      };
+    case actionTypes.REMOVE_EMPLOYEE:
+      employees = [...state.employees];
+      employees.splice(action.employeeIndex, 1);
+
+      return {
+        ...state,
+        employees
       };
 
     default:
