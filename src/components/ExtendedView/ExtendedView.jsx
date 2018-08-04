@@ -105,9 +105,9 @@ const ExtendedView = ({ editorDate }) => {
   );
 };
 
-const mapStateToProps = ({ editorDate }) => {
+const mapStateToProps = (state) => {
   return {
-    editorDate
+    editorDate: state.temporary.editorDate
   };
 };
 

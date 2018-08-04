@@ -15,9 +15,9 @@ const Calendar = ({ hoveredDayId }) => {
   );
 };
 
-const mapStateToProps = ({ hoveredDayId }) => {
+const mapStateToProps = (state) => {
   return {
-    hoveredDayId
+    hoveredDayId: state.temporary.hoveredDayId
   };
 };
 

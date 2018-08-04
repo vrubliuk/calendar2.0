@@ -46,10 +46,10 @@ const Basket = ({ type, employees, colors }) => {
   );
 };
 
-const mapStateToProps = ({ employees, colors }) => {
+const mapStateToProps = (state) => {
   return {
-    employees,
-    colors
+    employees: state.employees.employees,
+    colors: state.colors.colors
   };
 };
 

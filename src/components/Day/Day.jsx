@@ -55,10 +55,10 @@ const Day = ({ id, type, database, draggedType, handleHover, handleDataTransfer 
   );
 };
 
-const mapStateToProps = ({ database, draggedType }) => {
+const mapStateToProps = (state) => {
   return {
-    database,
-    draggedType
+    database: state.days.database,
+    draggedType: state.temporary.draggedType
   };
 };
 

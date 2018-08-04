@@ -53,12 +53,12 @@ const Detail = ({ id, type, database, colors, chosenMondays, draggedType, handle
   );
 };
 
-const mapStateToProps = ({ database, colors, chosenMondays, draggedType }) => {
+const mapStateToProps = (state) => {
   return {
-    database,
-    colors,
-    chosenMondays,
-    draggedType
+    database: state.days.database,
+    colors: state.colors.colors,
+    chosenMondays: state.temporary.chosenMondays,
+    draggedType: state.temporary.draggedType
   };
 };
 const mapDispatchToProps = dispatch => {

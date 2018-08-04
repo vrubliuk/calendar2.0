@@ -24,9 +24,9 @@ const CompactView = ({ calendarDate }) => {
   );
 };
 
-const mapStateToProps = ({ calendarDate }) => {
+const mapStateToProps = (state) => {
   return {
-    calendarDate
+    calendarDate: state.temporary.calendarDate
   };
 };
 

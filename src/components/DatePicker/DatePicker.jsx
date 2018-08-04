@@ -32,10 +32,10 @@ const DatePicker = ({ calendarDate, editorDate, location, handleClickButtonPrevi
   );
 };
 
-const mapStateToProps = ({ calendarDate, editorDate }) => {
+const mapStateToProps = (state) => {
   return {
-    calendarDate,
-    editorDate
+    calendarDate:state.temporary.calendarDate,
+    editorDate: state.temporary.editorDate
   };
 };
 

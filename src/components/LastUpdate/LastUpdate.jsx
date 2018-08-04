@@ -45,9 +45,9 @@ class LastUpdate extends Component {
   }
 }
 
-const mapStateToProps = ({ lastUpdate }) => {
+const mapStateToProps = (state) => {
   return {
-    lastUpdate
+    lastUpdate:state.history.lastUpdate
   };
 };
 

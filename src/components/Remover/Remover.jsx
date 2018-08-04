@@ -41,15 +41,15 @@ const Remover = ({ type, id, detailType, employeeIndex, removeDayOff, removeSche
   );
 };
 
-const mapStateToProps = ({ colors }) => {
+const mapStateToProps = (state) => {
   return {
-    colors
+    colors: state.colors.colors
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    removeDayOff: id => dispatch({ type: "REMOVE_DAYOFF", id }),
+    removeDayOff: id => dispatch({ type: actionTypes.REMOVE_DAYOFF, id }),
     removeSchedule: (id, detailType) => dispatch({ type: actionTypes.REMOVE_SCHEDULE, payload: { id, detailType } }),
     removeEmployee: employeeIndex => dispatch({ type: actionTypes.REMOVE_EMPLOYEE, employeeIndex })
   };

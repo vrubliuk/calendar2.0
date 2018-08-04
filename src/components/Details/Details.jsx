@@ -62,10 +62,10 @@ const Details = ({ hoveredDayId, database }) => {
   );
 };
 
-const mapStateToProps = ({ hoveredDayId, database }) => {
+const mapStateToProps = (state) => {
   return {
-    hoveredDayId,
-    database
+    hoveredDayId: state.temporary.hoveredDayId,
+    database: state.days.database
   };
 };
 

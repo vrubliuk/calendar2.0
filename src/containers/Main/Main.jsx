@@ -18,9 +18,9 @@ const Main = ({ authorized }) => {
   );
 };
 
-const mapStateToProps = ({ authorized }) => {
+const mapStateToProps = (state) => {
   return {
-    authorized
+    authorized: state.authorization.authorized
   };
 };
 

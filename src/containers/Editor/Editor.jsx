@@ -27,9 +27,9 @@ const Editor = ({ chosenMondays }) => {
   );
 };
 
-const mapStateToProps = ({ chosenMondays }) => {
+const mapStateToProps = (state) => {
   return {
-    chosenMondays
+    chosenMondays: state.temporary.chosenMondays
   };
 };
 

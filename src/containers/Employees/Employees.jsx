@@ -54,9 +54,9 @@ class Employees extends Component {
   }
 }
 
-const mapStateToProps = ({ employees }) => {
+const mapStateToProps = (state) => {
   return {
-    employees
+    employees: state.employees.employees
   };
 };
 const mapDispatchToProps = dispatch => {
