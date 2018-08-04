@@ -40,7 +40,7 @@ const initialState = {
   colors: {
     white: {
       dark: "#e6e6e6",
-      light: "white"
+      light: "#ffffff"
     },
     yellow: {
       dark: "#ffd966",
