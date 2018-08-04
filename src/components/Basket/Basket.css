@@ -8,12 +8,18 @@
   border: 2px solid white;
   padding: 0 2px;
   font-size: 0.9rem;
-
 }
 
+.Basket__Body__Wrapper {
+  height: 108px;
+  overflow: hidden;
+
+}
 .Basket__Body {
   display: flex;
   flex-wrap: wrap;
+  overflow-y: auto;
+  height: 100%;
 }
 
 .Basket__Footer {

@@ -46,13 +46,17 @@ const initialState = {
       dark: "#ffd966",
       light: "#fff2cc"
     },
+    orange: {
+      dark: "#f6b26b",
+      light: "#fce5cd"
+    },
     green: {
       dark: "#93c47d",
       light: "#d9ead3"
     },
-    red: {
-      dark: "#e06666",
-      light: "#f4cccc"
+    cyan: {
+      dark: "#76a5af",
+      light: "#d0e0e3"
     },
     blue: {
       dark: "#6fa8dc",
@@ -65,14 +69,13 @@ const initialState = {
     pink: {
       dark: "#c27ba0",
       light: "#ead1dc"
-    }
+    },
+    red: {
+      dark: "#e06666",
+      light: "#f4cccc"
+    },
   },
-  chosenMondays: [
-    // {
-    //   id: "2018.7.16",
-    //   type: "morningShift"
-    // }
-  ],
+  chosenMondays: [],
   draggedType: null
 };
 

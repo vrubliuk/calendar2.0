@@ -39,7 +39,8 @@ const Basket = ({ type, employees, colors }) => {
   return (
     <div className={`Basket ${additionalClass}`}>
       <div className="Basket__Header">{headerText}</div>
-      <div className="Basket__Body">{content}</div>
+     
+      <div className="Basket__Body__Wrapper"><div className="Basket__Body">{content}</div></div>
       <div className="Basket__Footer" />
     </div>
   );
