@@ -25,6 +25,7 @@ import { connect } from "react-redux";
 
 const Main = ({ authorized }) => {
   return (
+    
     <Switch>
       <Route exact path="/" component={Calendar} />
       <Route exact path="/editor" render={() => (authorized ? <Editor /> : <Redirect to="/authentication" />)} />
@@ -32,6 +33,7 @@ const Main = ({ authorized }) => {
       <Route exact path="/authentication" component={Authentication} />
       <Redirect to="/" />
     </Switch>
+
   );
 };
 

@@ -28,7 +28,9 @@
   font-size: 1.4rem;
   line-height: 1.4rem;
 }
+
 .Remover-Employee:hover {
   color: white;
-  background: rgb(207, 70, 71);
+  /* background: rgb(207, 70, 71); */
+  box-shadow: 0 0 8px rgb(207, 70, 71);
 }

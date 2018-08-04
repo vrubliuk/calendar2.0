@@ -15,6 +15,14 @@ class Employees extends Component {
     });
   };
 
+  handleClick = () => {
+    if (!this.state.newEmployeeName) return;
+    this.props.addEmployee(this.state.newEmployeeName);
+    this.setState({
+      newEmployeeName: ""
+    });
+  };
+
   render() {
     const employeesList = this.props.employees.map((name, i) => {
       return (
@@ -25,14 +33,20 @@ class Employees extends Component {
       );
     });
 
+    const additionalButtonClass = this.state.newEmployeeName ? "Employees__Button-Active" : "";
+
     return (
-      <div className="Employees">
-        <div className="Employees__InnerContainer">
-          <div className="Employees__Header">
-            <input type="text" placeholder="Enter name here" maxLength="25" value={this.state.newEmployeeName} onChange={this.handleInput} />
-            <button onClick={this.props.addEmployee.bind(this, this.state.newEmployeeName)}>Add</button>
+      <div className="Employees__OuterContainer">
+        <div className="Employees">
+          <div className="Employees__InnerContainer">
+            <div className="Employees__Header">
+              <input type="text" placeholder="Enter name here" maxLength="25" value={this.state.newEmployeeName} onChange={this.handleInput} />
+              <button className={`Employees__Button ${additionalButtonClass}`} onClick={this.handleClick}>
+                Add
+              </button>
+            </div>
+            {employeesList}
           </div>
-          {employeesList}
         </div>
       </div>
     );
