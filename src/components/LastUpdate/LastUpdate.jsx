@@ -41,7 +41,7 @@ class LastUpdate extends Component {
     setInterval(this.updateTimeDifference, 60000); // update once per minute
   }
   render() {
-    return <div className="LastUpdate">Last update: {this.state.timeDifference}</div>;
+    return <div className="LastUpdate">Last updated {this.state.timeDifference}</div>;
   }
 }
 
