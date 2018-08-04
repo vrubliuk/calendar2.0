@@ -1,6 +1,7 @@
 import React from "react";
 import "./Remover.css";
 import { connect } from "react-redux";
+import * as actionTypes from "../../store/actions";
 
 const Remover = ({ type, id, detailType, employeeIndex, removeDayOff, removeSchedule, removeEmployee }) => {
   let additionalClass = "";
@@ -9,19 +10,19 @@ const Remover = ({ type, id, detailType, employeeIndex, removeDayOff, removeSche
   switch (type) {
     case "day":
       additionalClass = "Remover-Schedule";
-      remove = removeDayOff.bind(this, id)
+      remove = removeDayOff.bind(this, id);
       break;
     case "today":
       additionalClass = "Remover-Schedule Remover-Schedule-White";
-      remove = removeDayOff.bind(this, id)
+      remove = removeDayOff.bind(this, id);
       break;
     case "detail":
       additionalClass = "Remover-Schedule";
-      remove = removeSchedule.bind(this, id, detailType)
+      remove = removeSchedule.bind(this, id, detailType);
       break;
     case "employee":
       additionalClass = "Remover-Employee";
-      remove = removeEmployee.bind(this, employeeIndex)
+      remove = removeEmployee.bind(this, employeeIndex);
       break;
 
     default:
@@ -48,12 +49,13 @@ const mapStateToProps = ({ colors }) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    removeDayOff:(id) => dispatch({type: "REMOVE_DAYOFF", id}),
-    removeSchedule: (id, detailType) => dispatch({type: 'REMOVE_SCHEDULE', payload: {id, detailType} }),
-    removeEmployee: (employeeIndex) => dispatch({type: 'REMOVE_EMPLOYEE', employeeIndex}),
-    
-  }
-}
+    removeDayOff: id => dispatch({ type: "REMOVE_DAYOFF", id }),
+    removeSchedule: (id, detailType) => dispatch({ type: actionTypes.REMOVE_SCHEDULE, payload: { id, detailType } }),
+    removeEmployee: employeeIndex => dispatch({ type: actionTypes.REMOVE_EMPLOYEE, employeeIndex })
+  };
+};
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(Remover);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Remover);

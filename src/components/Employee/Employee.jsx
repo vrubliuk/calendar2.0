@@ -1,6 +1,7 @@
 import React from "react";
 import "./Employee.css";
 import { connect } from "react-redux";
+import * as actionTypes from "../../store/actions"
 
 const Employee = ({ name, type, setDraggedType }) => {
   let additionalClass = "";
@@ -35,7 +36,7 @@ const Employee = ({ name, type, setDraggedType }) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setDraggedType: payload => dispatch({ type: "SET_DRAGGED_TYPE", payload })
+    setDraggedType: payload => dispatch({ type: actionTypes.SET_DRAGGED_TYPE, payload })
   };
 };
 

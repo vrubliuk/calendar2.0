@@ -52,7 +52,6 @@ const Details = ({ hoveredDayId, database }) => {
 
   return (
     <div className="Details">
-    {/* {pendingDayOffDetails} */} 
       {confirmedDayOffDetails}
       {pendingDayOffDetails}
       {morningShiftDetails}

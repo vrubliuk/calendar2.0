@@ -2,6 +2,7 @@ import React from "react";
 import "./Color.css";
 import Radium from "radium";
 import { connect } from "react-redux";
+import * as actionTypes from "../../store/actions"
 
 const Color = ({ name, colors, setColor, clearChosenMondays }) => {
 
@@ -50,8 +51,8 @@ const mapStateToProps = ({ colors }) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setColor: (name) => dispatch({type: "SET_COLOR", color: name}),
-    clearChosenMondays: () => dispatch({type: "CLEAR_CHOSEN_MONDAYS"})
+    setColor: (name) => dispatch({type: actionTypes.SET_COLOR, color: name}),
+    clearChosenMondays: () => dispatch({type: actionTypes.CLEAR_CHOSEN_MONDAYS})
   };
 };
 

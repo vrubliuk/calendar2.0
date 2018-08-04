@@ -2,6 +2,7 @@ import React from "react";
 import "./Detail.css";
 import { connect } from "react-redux";
 import Remover from "../Remover/Remover.jsx";
+import * as actionTypes from "../../store/actions"
 
 const Detail = ({ id, type, database, colors, chosenMondays, draggedType, handleDataTransfer, handleMondaySelection }) => {
   const infoExists = id in database && type in database[id];
@@ -62,8 +63,8 @@ const mapStateToProps = ({ database, colors, chosenMondays, draggedType }) => {
 };
 const mapDispatchToProps = dispatch => {
   return {
-    handleDataTransfer: (id, type, name) => dispatch({ type: "UPDATE_SCHEDULE", payload: { id, type, name } }),
-    handleMondaySelection: (id, type) => dispatch({ type: "TOGGLE_MONDAY_SELECTION", payload: { id, type } })
+    handleDataTransfer: (id, type, name) => dispatch({ type: actionTypes.UPDATE_SCHEDULE, payload: { id, type, name } }),
+    handleMondaySelection: (id, type) => dispatch({ type: actionTypes.TOGGLE_MONDAY_SELECTION, payload: { id, type } })
   };
 };
 
