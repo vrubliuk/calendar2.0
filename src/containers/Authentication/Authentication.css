@@ -1,0 +1,58 @@
+.Authentication__Wrapper {
+  position: relative;
+  padding: 60px;
+  height: calc(100% - 60px);
+  overflow: hidden;
+}
+
+.Authentication {
+  margin: auto;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.Authentication__Header {
+  text-align: center;
+  font-size: 1.2rem;
+  height: 60px;
+  line-height: 60px;
+  background: #b3b3b3;
+}
+
+.Authentication__Main {
+  background: #e6e6e6;
+  padding: 10px;
+  text-align: center;
+}
+
+.Authentication__Label {
+  text-align: left;
+  
+  margin: 10px 0;
+}
+.Authentication__Input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+ 
+}
+
+.Authentication__Error {
+  color: rgb(207, 70, 71);
+  margin: 10px 0 20px;
+  text-align: center;
+  font-size: 0.9rem;
+  padding: 0 10px;
+  font-weight: 900;
+}
+
+.Authentication__Button {
+  background: rgb(207, 70, 71);
+  color: white;
+}
+.Authentication__Button:hover {
+  box-shadow: 0 0 8px rgb(207, 70, 71);
+}
+
