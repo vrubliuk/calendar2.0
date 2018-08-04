@@ -73,7 +73,7 @@ const initialState = {
     red: {
       dark: "#e06666",
       light: "#f4cccc"
-    },
+    }
   },
   chosenMondays: [],
   draggedType: null
@@ -126,6 +126,11 @@ const reducer = (state = initialState, action) => {
       };
 
     case actionTypes.REMOVE_DAYOFF:
+      database = { ...state.database };
+      const confirmedDayOffExists = "confirmedDayOff" in database[action.id];
+      const pendingDayOffExists = "pendingDayOff" in database[action.id];
+      if (confirmedDayOffExists) delete database[action.id].confirmedDayOff;
+      if (pendingDayOffExists) delete database[action.id].pendingDayOff;
       return {
         ...state,
         database
