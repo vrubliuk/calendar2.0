@@ -154,6 +154,10 @@ const reducer = (state = initialState, action) => {
         database
       };
     case actionTypes.REMOVE_SCHEDULE:
+      database = { ...state.database };
+      const colorExists = "colors" in database[action.payload.id] && action.payload.detailType in database[action.payload.id].colors;
+      delete database[action.payload.id][action.payload.detailType];
+      if (colorExists) delete database[action.payload.id].colors[action.payload.detailType];
       return {
         ...state,
         database

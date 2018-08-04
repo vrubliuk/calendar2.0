@@ -2,7 +2,7 @@ import React from "react";
 import "./Remover.css";
 import { connect } from "react-redux";
 
-const Remover = ({ type, id, employeeIndex, removeDayOff, removeEmployee }) => {
+const Remover = ({ type, id, detailType, employeeIndex, removeDayOff, removeSchedule, removeEmployee }) => {
   let additionalClass = "";
   let remove = () => {};
 
@@ -17,6 +17,7 @@ const Remover = ({ type, id, employeeIndex, removeDayOff, removeEmployee }) => {
       break;
     case "detail":
       additionalClass = "Remover-Schedule";
+      remove = removeSchedule.bind(this, id, detailType)
       break;
     case "employee":
       additionalClass = "Remover-Employee";
@@ -48,7 +49,7 @@ const mapStateToProps = ({ colors }) => {
 const mapDispatchToProps = dispatch => {
   return {
     removeDayOff:(id) => dispatch({type: "REMOVE_DAYOFF", id}),
-    removeSchedule: () => dispatch({type: 'REMOVE_SCHEDULE'}),
+    removeSchedule: (id, detailType) => dispatch({type: 'REMOVE_SCHEDULE', payload: {id, detailType} }),
     removeEmployee: (employeeIndex) => dispatch({type: 'REMOVE_EMPLOYEE', employeeIndex}),
     
   }

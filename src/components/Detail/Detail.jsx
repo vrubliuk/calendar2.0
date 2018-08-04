@@ -41,7 +41,7 @@ const Detail = ({ id, type, database, colors, chosenMondays, draggedType, handle
   }
 
   const handleClick = infoExists ? handleMondaySelection.bind(this, id, type) : null;
-  const remover = infoExists ? <Remover type="detail" /> : null;
+  const remover = infoExists ? <Remover type="detail" id={id} detailType={type} /> : null;
 
   return (
     <div className={`Detail ${info ? "Detail-Filled" : ""}`} style={additionalStyleDetail} onDragOver={handleDragOver} onDrop={handleDrop} onClick={handleClick}>
