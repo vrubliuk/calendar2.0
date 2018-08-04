@@ -76,7 +76,8 @@ const initialState = {
     }
   },
   chosenMondays: [],
-  draggedType: null
+  draggedType: null,
+  lastUpdate: 1533395939151
 };
 
 const reducer = (state = initialState, action) => {
