@@ -1,7 +1,7 @@
 import React from "react";
 import "./Employee.css";
 import { connect } from "react-redux";
-import * as actionCreators from "../../store/actions/actions"
+import * as actionCreators from "../../store/actions/index"
 
 const Employee = ({ name, type, setDraggedType }) => {
   let additionalClass = "";

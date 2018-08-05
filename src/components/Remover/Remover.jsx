@@ -1,7 +1,7 @@
 import React from "react";
 import "./Remover.css";
 import { connect } from "react-redux";
-import * as actionCreators from "../../store/actions/actions"
+import * as actionCreators from "../../store/actions/index"
 
 const Remover = ({ type, id, detailType, employeeIndex, removeDayOff, removeSchedule, removeEmployee }) => {
   let additionalClass = "";

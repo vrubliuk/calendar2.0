@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./Employees.css";
 import { connect } from "react-redux";
 import Remover from "../../components/Remover/Remover";
-import * as actionCreators from "../../store/actions/actions"
+import * as actionCreators from "../../store/actions/index"
 
 class Employees extends Component {
   state = {

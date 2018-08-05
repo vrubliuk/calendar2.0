@@ -2,7 +2,7 @@ import React from "react";
 import "./Detail.css";
 import { connect } from "react-redux";
 import Remover from "../Remover/Remover.jsx";
-import * as actionCreators from "../../store/actions/actions"
+import * as actionCreators from "../../store/actions/index"
 
 const Detail = ({ id, type, database, colors, chosenMondays, draggedType, handleDataTransfer, handleMondaySelection }) => {
   const infoExists = id in database && type in database[id];
