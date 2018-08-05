@@ -3,8 +3,9 @@ import "./Detail.css";
 import { connect } from "react-redux";
 import Remover from "../Remover/Remover.jsx";
 import * as actionCreators from "../../store/actions/index"
+import {colors} from "../../assets/colors"
 
-const Detail = ({ id, type, days, colors, chosenMondays, draggedType, handleDataTransfer, handleMondaySelection }) => {
+const Detail = ({ id, type, days, chosenMondays, draggedType, handleDataTransfer, handleMondaySelection }) => {
   const infoExists = id in days && type in days[id];
   const colorExists = infoExists && "colors" in days[id] && type in days[id].colors;
   const info = infoExists ? <div className="Detail__Info">{days[id][type]}</div> : null;
@@ -56,7 +57,6 @@ const Detail = ({ id, type, days, colors, chosenMondays, draggedType, handleData
 const mapStateToProps = (state) => {
   return {
     days: state.days.days,
-    colors: state.colors.colors,
     chosenMondays: state.temporary.chosenMondays,
     draggedType: state.temporary.draggedType
   };

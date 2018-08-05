@@ -3,8 +3,9 @@ import "./Basket.css";
 import Employee from "../Employee/Employee";
 import Color from "../Color/Color";
 import { connect } from "react-redux";
+import {colors} from "../../assets/colors";
 
-const Basket = ({ type, employees, colors }) => {
+const Basket = ({ type, employees }) => {
   const employeesList = employees.map((name, i) => <Employee name={name} type={type} key={i} />);
   const colorsList = Object.keys(colors).map((name, i) => <Color name={name} key={i} />);
 
@@ -49,7 +50,6 @@ const Basket = ({ type, employees, colors }) => {
 const mapStateToProps = (state) => {
   return {
     employees: state.employees.employees,
-    colors: state.colors.colors
   };
 };
 

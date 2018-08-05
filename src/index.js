@@ -10,7 +10,6 @@ import thunk from "redux-thunk";
 import history from "./store/reducers/history";
 import employees from "./store/reducers/employees";
 import temporary from "./store/reducers/temporary";
-import colors from "./store/reducers/colors";
 import authorization from "./store/reducers/authorization";
 import days from "./store/reducers/days";
 
@@ -18,7 +17,6 @@ const rootReducer = combineReducers({
   history,
   employees,
   temporary,
-  colors,
   authorization,
   days
 });

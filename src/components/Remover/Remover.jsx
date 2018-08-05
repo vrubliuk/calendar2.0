@@ -41,11 +41,6 @@ const Remover = ({ type, id, detailType, employeeIndex, removeDayOff, removeSche
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    colors: state.colors.colors
-  };
-};
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -59,6 +54,6 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(Remover);

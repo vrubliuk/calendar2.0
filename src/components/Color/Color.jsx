@@ -3,8 +3,9 @@ import "./Color.css";
 import Radium from "radium";
 import { connect } from "react-redux";
 import * as actionCreators from "../../store/actions/index"
+import {colors} from "../../assets/colors"
 
-const Color = ({ name, colors, setColor, chosenMondays, clearChosenMondays }) => {
+const Color = ({ name, setColor, chosenMondays, clearChosenMondays }) => {
 
 
   let style = {
@@ -24,7 +25,6 @@ const Color = ({ name, colors, setColor, chosenMondays, clearChosenMondays }) =>
 
 const mapStateToProps = (state) => {
   return {
-    colors: state.colors.colors,
     chosenMondays: state.temporary.chosenMondays
   };
 };
