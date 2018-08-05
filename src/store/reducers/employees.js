@@ -5,19 +5,24 @@ const initialState = {
   employees: ["Yaryna", "Oksana", "Uliana", "Nazar"]
 };
 
+const addEmployee = (state, action) => {
+  let employees = [...state.employees];
+  employees.push(action.employeeName);
+  return updateState(state, { employees });
+};
+
+const removeEmployee = (state, action) => {
+  let employees = [...state.employees];
+  employees.splice(action.employeeIndex, 1);
+  return updateState(state, { employees });
+};
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.ADD_EMPLOYEE:
-      let employees = [...state.employees];
-      employees.push(action.employeeName);
-      return updateState(state, {employees})
-      
+      return addEmployee(state, action);
     case actionTypes.REMOVE_EMPLOYEE:
-      employees = [...state.employees];
-      employees.splice(action.employeeIndex, 1);
-      return updateState(state, {employees})
-      
-
+      return removeEmployee(state, action);
     default:
       return state;
   }
