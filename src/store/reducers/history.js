@@ -1,4 +1,5 @@
 import * as actionTypes from "../actions/actionTypes";
+import { updateState } from "../utility/updateState";
 
 const initialState = {
   lastUpdate: 1533395939151

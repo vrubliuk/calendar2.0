@@ -1,4 +1,5 @@
 import * as actionTypes from "../actions/actionTypes";
+import { updateState } from "../utility/updateState";
 
 const initialState = {
   database: {
@@ -49,21 +50,14 @@ const reducer = (state = initialState, action) => {
           [action.payload.type]: [[action.payload.name]]
         };
       }
-      return {
-        ...state,
-        database
-      };
-
+      return updateState(state, {database});
     case actionTypes.REMOVE_DAYOFF:
       database = { ...state.database };
       const confirmedDayOffExists = "confirmedDayOff" in database[action.id];
       const pendingDayOffExists = "pendingDayOff" in database[action.id];
       if (confirmedDayOffExists) delete database[action.id].confirmedDayOff;
       if (pendingDayOffExists) delete database[action.id].pendingDayOff;
-      return {
-        ...state,
-        database
-      };
+      return updateState(state, {database});
 
     case actionTypes.UPDATE_SCHEDULE:
       database = { ...state.database };
@@ -78,19 +72,13 @@ const reducer = (state = initialState, action) => {
               [type]: name
             });
       }
-      return {
-        ...state,
-        database
-      };
+      return updateState(state, {database});
     case actionTypes.REMOVE_SCHEDULE:
       database = { ...state.database };
       const colorExists = "colors" in database[action.payload.id] && action.payload.detailType in database[action.payload.id].colors;
       delete database[action.payload.id][action.payload.detailType];
       if (colorExists) delete database[action.payload.id].colors[action.payload.detailType];
-      return {
-        ...state,
-        database
-      };
+      return updateState(state, {database});
 
     case actionTypes.SET_COLOR:
       database = { ...state.database };
@@ -103,10 +91,7 @@ const reducer = (state = initialState, action) => {
               [monday.type]: action.color
             });
       });
-      return {
-        ...state,
-        database
-      };
+      return updateState(state, {database});
 
     default:
       return state;
