@@ -3,7 +3,7 @@ import "./Day.css";
 import { connect } from "react-redux";
 import todayIconPath from "../../assets/today.png";
 import Remover from "../Remover/Remover.jsx";
-import * as actionTypes from "../../store/actions"
+import * as actionCreators from "../../store/actions/actions"
 
 const Day = ({ id, type, database, draggedType, handleHover, handleDataTransfer }) => {
   const year = id.split(".")[0];
@@ -64,8 +64,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    handleHover: id => dispatch({ type: actionTypes.HOVER_DAY, id }),
-    handleDataTransfer: (id, type, name) => dispatch({ type: actionTypes.UPDATE_DAYOFF, payload: { id, type, name } })
+    // handleHover: id => dispatch({ type: actionTypes.HOVER_DAY, id }),
+    // handleDataTransfer: (id, type, name) => dispatch({ type: actionTypes.UPDATE_DAYOFF, payload: { id, type, name } })
+    handleHover: id => dispatch(actionCreators.hoverDay(id)),
+    handleDataTransfer: (id, type, name) => dispatch( actionCreators.updateDayOff(id, type, name))
   };
 };
 

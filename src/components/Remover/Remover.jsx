@@ -1,7 +1,7 @@
 import React from "react";
 import "./Remover.css";
 import { connect } from "react-redux";
-import * as actionTypes from "../../store/actions";
+import * as actionCreators from "../../store/actions/actions"
 
 const Remover = ({ type, id, detailType, employeeIndex, removeDayOff, removeSchedule, removeEmployee }) => {
   let additionalClass = "";
@@ -49,9 +49,12 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    removeDayOff: id => dispatch({ type: actionTypes.REMOVE_DAYOFF, id }),
-    removeSchedule: (id, detailType) => dispatch({ type: actionTypes.REMOVE_SCHEDULE, payload: { id, detailType } }),
-    removeEmployee: employeeIndex => dispatch({ type: actionTypes.REMOVE_EMPLOYEE, employeeIndex })
+    // removeDayOff: id => dispatch({ type: actionTypes.REMOVE_DAYOFF, id }),
+    // removeSchedule: (id, detailType) => dispatch({ type: actionTypes.REMOVE_SCHEDULE, payload: { id, detailType } }),
+    // removeEmployee: employeeIndex => dispatch({ type: actionTypes.REMOVE_EMPLOYEE, employeeIndex })
+    removeDayOff: id => dispatch(actionCreators.removeDayOff(id)),
+    removeSchedule: (id, detailType) => dispatch(actionCreators.removeSchedule(id, detailType)),
+    removeEmployee: employeeIndex => dispatch(actionCreators.removeEmployee(employeeIndex))
   };
 };
 

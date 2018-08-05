@@ -2,7 +2,7 @@ import React from "react";
 import "./Detail.css";
 import { connect } from "react-redux";
 import Remover from "../Remover/Remover.jsx";
-import * as actionTypes from "../../store/actions"
+import * as actionCreators from "../../store/actions/actions"
 
 const Detail = ({ id, type, database, colors, chosenMondays, draggedType, handleDataTransfer, handleMondaySelection }) => {
   const infoExists = id in database && type in database[id];
@@ -63,8 +63,10 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = dispatch => {
   return {
-    handleDataTransfer: (id, type, name) => dispatch({ type: actionTypes.UPDATE_SCHEDULE, payload: { id, type, name } }),
-    handleMondaySelection: (id, type) => dispatch({ type: actionTypes.TOGGLE_MONDAY_SELECTION, payload: { id, type } })
+    // handleDataTransfer: (id, type, name) => dispatch({ type: actionTypes.UPDATE_SCHEDULE, payload: { id, type, name } }),
+    // handleMondaySelection: (id, type) => dispatch({ type: actionTypes.TOGGLE_MONDAY_SELECTION, payload: { id, type } })
+    handleDataTransfer: (id, type, name) => dispatch( actionCreators.updateSchedule(id, type, name)  ),
+    handleMondaySelection: (id, type) => dispatch( actionCreators.toggleMondaySelection(id, type) )
   };
 };
 

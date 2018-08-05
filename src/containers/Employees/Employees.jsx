@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./Employees.css";
 import { connect } from "react-redux";
 import Remover from "../../components/Remover/Remover";
-import * as actionTypes from "../../store/actions"
+import * as actionCreators from "../../store/actions/actions"
 
 class Employees extends Component {
   state = {
@@ -61,7 +61,8 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = dispatch => {
   return {
-    addEmployee: employeeName => dispatch({ type: actionTypes.ADD_EMPLOYEE, employeeName })
+    // addEmployee: employeeName => dispatch({ type: actionTypes.ADD_EMPLOYEE, employeeName })
+    addEmployee: employeeName => dispatch(actionCreators.addEmployee(employeeName))
   };
 };
 
