@@ -4,15 +4,15 @@ import { connect } from "react-redux";
 import Remover from "../Remover/Remover.jsx";
 import * as actionCreators from "../../store/actions/index"
 
-const Detail = ({ id, type, database, colors, chosenMondays, draggedType, handleDataTransfer, handleMondaySelection }) => {
-  const infoExists = id in database && type in database[id];
-  const colorExists = infoExists && "colors" in database[id] && type in database[id].colors;
-  const info = infoExists ? <div className="Detail__Info">{database[id][type]}</div> : null;
+const Detail = ({ id, type, days, colors, chosenMondays, draggedType, handleDataTransfer, handleMondaySelection }) => {
+  const infoExists = id in days && type in days[id];
+  const colorExists = infoExists && "colors" in days[id] && type in days[id].colors;
+  const info = infoExists ? <div className="Detail__Info">{days[id][type]}</div> : null;
 
   const additionalStyleDetail = colorExists
     ? {
-        background: colors[database[id].colors[type]].light,
-        border: `2px solid ${colors[database[id].colors[type]].dark}`
+        background: colors[days[id].colors[type]].light,
+        border: `2px solid ${colors[days[id].colors[type]].dark}`
       }
     : null;
 
@@ -23,7 +23,7 @@ const Detail = ({ id, type, database, colors, chosenMondays, draggedType, handle
 
   const additionalStylePointer = colorExists
     ? {
-        background: colors[database[id].colors[type]].dark
+        background: colors[days[id].colors[type]].dark
       }
     : null;
 
@@ -55,7 +55,7 @@ const Detail = ({ id, type, database, colors, chosenMondays, draggedType, handle
 
 const mapStateToProps = (state) => {
   return {
-    database: state.days.database,
+    days: state.days.days,
     colors: state.colors.colors,
     chosenMondays: state.temporary.chosenMondays,
     draggedType: state.temporary.draggedType

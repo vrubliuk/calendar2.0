@@ -2,7 +2,7 @@ import React from "react";
 import "./Details.css";
 import { connect } from "react-redux";
 
-const Details = ({ hoveredDayId, database }) => {
+const Details = ({ hoveredDayId, days }) => {
   let confirmedDayOffDetails = null;
   let pendingDayOffDetails = null;
   let morningShiftDetails = null;
@@ -10,40 +10,40 @@ const Details = ({ hoveredDayId, database }) => {
   let auditDetails = null;
   let warningMessage = null;
 
-  if (hoveredDayId in database) {
+  if (hoveredDayId in days) {
     confirmedDayOffDetails =
-      "confirmedDayOff" in database[hoveredDayId] ? (
+      "confirmedDayOff" in days[hoveredDayId] ? (
         <div className="Details__Item Details__Item-ConfirmedDayOff">
           <div>Confirmed day off:</div>
-          <div>{database[hoveredDayId]["confirmedDayOff"].join(', ')}</div>
+          <div>{days[hoveredDayId]["confirmedDayOff"].join(', ')}</div>
         </div>
       ) : null;
     pendingDayOffDetails =
-      "pendingDayOff" in database[hoveredDayId] ? (
+      "pendingDayOff" in days[hoveredDayId] ? (
         <div className="Details__Item Details__Item-PendingDayOff">
           <div>Pending day off:</div>
-          <div>{database[hoveredDayId]["pendingDayOff"].join(', ')}</div>
+          <div>{days[hoveredDayId]["pendingDayOff"].join(', ')}</div>
         </div>
       ) : null;
     morningShiftDetails =
-      "morningShift" in database[hoveredDayId] ? (
+      "morningShift" in days[hoveredDayId] ? (
         <div className="Details__Item Details__Item-MorningShift">
           <div>Morning shift:</div>
-          <div>{database[hoveredDayId]["morningShift"]}</div>
+          <div>{days[hoveredDayId]["morningShift"]}</div>
         </div>
       ) : null;
     sharedInboxDetails =
-      "sharedInbox" in database[hoveredDayId] ? (
+      "sharedInbox" in days[hoveredDayId] ? (
         <div className="Details__Item Details__Item-SharedInbox">
           <div>Shared inbox:</div>
-          <div>{database[hoveredDayId]["sharedInbox"]}</div>
+          <div>{days[hoveredDayId]["sharedInbox"]}</div>
         </div>
       ) : null;
     auditDetails =
-      "audit" in database[hoveredDayId] ? (
+      "audit" in days[hoveredDayId] ? (
         <div className="Details__Item Details__Item-Audit">
           <div>Audit:</div>
-          <div>{database[hoveredDayId]["audit"]}</div>
+          <div>{days[hoveredDayId]["audit"]}</div>
         </div>
       ) : null;
   } else if (hoveredDayId) {
@@ -65,7 +65,7 @@ const Details = ({ hoveredDayId, database }) => {
 const mapStateToProps = (state) => {
   return {
     hoveredDayId: state.temporary.hoveredDayId,
-    database: state.days.database
+    days: state.days.days
   };
 };
 

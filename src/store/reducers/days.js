@@ -2,7 +2,7 @@ import * as actionTypes from "../actions/actionTypes";
 import { updateState } from "../utility/updateState";
 
 const initialState = {
-  database: {
+  days: {
     "2018.7.16": {
       confirmedDayOff: ["Uliana", "Oksana"],
       pendingDayOff: ["Yaryna"],
@@ -36,65 +36,65 @@ const initialState = {
 };
 
 const updateDayOff = (state, action) => {
-  let database = { ...state.database };
-  let idExists = action.payload.id in database;
-  let typeExists = idExists && action.payload.type in database[action.payload.id];
+  let days = { ...state.days };
+  let idExists = action.payload.id in days;
+  let typeExists = idExists && action.payload.type in days[action.payload.id];
   if (typeExists) {
-    database[action.payload.id][action.payload.type].push(action.payload.name);
+    days[action.payload.id][action.payload.type].push(action.payload.name);
   } else if (idExists) {
-    database[action.payload.id][action.payload.type] = [[action.payload.name]];
+    days[action.payload.id][action.payload.type] = [[action.payload.name]];
   } else {
-    database[action.payload.id] = {
+    days[action.payload.id] = {
       [action.payload.type]: [[action.payload.name]]
     };
   }
-  return updateState(state, { database });
+  return updateState(state, { days });
 };
 
 const removeDayOff = (state, action) => {
-  let database = { ...state.database };
-  const confirmedDayOffExists = "confirmedDayOff" in database[action.id];
-  const pendingDayOffExists = "pendingDayOff" in database[action.id];
-  if (confirmedDayOffExists) delete database[action.id].confirmedDayOff;
-  if (pendingDayOffExists) delete database[action.id].pendingDayOff;
-  return updateState(state, { database });
+  let days = { ...state.days };
+  const confirmedDayOffExists = "confirmedDayOff" in days[action.id];
+  const pendingDayOffExists = "pendingDayOff" in days[action.id];
+  if (confirmedDayOffExists) delete days[action.id].confirmedDayOff;
+  if (pendingDayOffExists) delete days[action.id].pendingDayOff;
+  return updateState(state, { days });
 };
 
 const updateSchedule = (state, action) => {
-  let database = { ...state.database };
+  let days = { ...state.days };
   let { id, type, name } = action.payload;
   for (let i = 0; i < 5; i++) {
     let day = new Date(id.split(".")[0], id.split(".")[1] - 1, id.split(".")[2]);
     day.setDate(day.getDate() + i);
     const currentId = `${day.getFullYear()}.${day.getMonth() + 1}.${day.getDate()}`;
-    currentId in database
-      ? (database[currentId][type] = name)
-      : (database[currentId] = {
+    currentId in days
+      ? (days[currentId][type] = name)
+      : (days[currentId] = {
           [type]: name
         });
   }
-  return updateState(state, { database });
+  return updateState(state, { days });
 };
 
 const removeSchedule = (state, action) => {
-  let database = { ...state.database };
-  const colorExists = "colors" in database[action.payload.id] && action.payload.detailType in database[action.payload.id].colors;
-  delete database[action.payload.id][action.payload.detailType];
-  if (colorExists) delete database[action.payload.id].colors[action.payload.detailType];
-  return updateState(state, { database });
+  let days = { ...state.days };
+  const colorExists = "colors" in days[action.payload.id] && action.payload.detailType in days[action.payload.id].colors;
+  delete days[action.payload.id][action.payload.detailType];
+  if (colorExists) delete days[action.payload.id].colors[action.payload.detailType];
+  return updateState(state, { days });
 };
 
 const setColor = (state, action) => {
-  let database = { ...state.database };
+  let days = { ...state.days };
   action.chosenMondays.forEach(monday => {
-    monday.id in database && "colors" in database[monday.id] && monday.type in database[monday.id].colors
-      ? (database[monday.id].colors[monday.type] = action.color)
-      : (database[monday.id].colors = {
-          ...database[monday.id].colors,
+    monday.id in days && "colors" in days[monday.id] && monday.type in days[monday.id].colors
+      ? (days[monday.id].colors[monday.type] = action.color)
+      : (days[monday.id].colors = {
+          ...days[monday.id].colors,
           [monday.type]: action.color
         });
   });
-  return updateState(state, { database });
+  return updateState(state, { days });
 };
 
 const reducer = (state = initialState, action) => {

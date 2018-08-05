@@ -5,7 +5,7 @@ import todayIconPath from "../../assets/today.png";
 import Remover from "../Remover/Remover.jsx";
 import * as actionCreators from "../../store/actions/index"
 
-const Day = ({ id, type, database, draggedType, handleHover, handleDataTransfer }) => {
+const Day = ({ id, type, days, draggedType, handleHover, handleDataTransfer }) => {
   const year = id.split(".")[0];
   const month = +id.split(".")[1] - 1;
   const day = id.split(".")[2];
@@ -13,8 +13,8 @@ const Day = ({ id, type, database, draggedType, handleHover, handleDataTransfer 
   const dayType = dayIndexInWeek === 0 || dayIndexInWeek === 6 ? "Day-Weekend" : "Day-Working";
   const todayId = `${new Date().getFullYear()}.${new Date().getMonth() + 1}.${new Date().getDate()}`;
   const isToday = id === todayId;
-  const confirmedDayOffExists = id in database && "confirmedDayOff" in database[id];
-  const pendingDayOffExists = id in database && "pendingDayOff" in database[id];
+  const confirmedDayOffExists = id in days && "confirmedDayOff" in days[id];
+  const pendingDayOffExists = id in days && "pendingDayOff" in days[id];
 
   const todayIndicatorIconAdditionalClass = confirmedDayOffExists || pendingDayOffExists ? "Day__TodayIndicator__Icon-Hidden" : null;
   const removerType = !isToday ? "day" : "today";
@@ -57,7 +57,7 @@ const Day = ({ id, type, database, draggedType, handleHover, handleDataTransfer 
 
 const mapStateToProps = (state) => {
   return {
-    database: state.days.database,
+    days: state.days.days,
     draggedType: state.temporary.draggedType
   };
 };
