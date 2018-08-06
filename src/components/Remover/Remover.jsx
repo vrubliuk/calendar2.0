@@ -3,7 +3,7 @@ import "./Remover.css";
 import { connect } from "react-redux";
 import * as actionCreators from "../../store/actions/index"
 
-const Remover = ({ type, id, detailType, employeeIndex, removeDayOff, removeSchedule, removeEmployee }) => {
+const Remover = ({ type, id, detailType, employees, employeeIndex, removeDayOff, removeSchedule, removeEmployee }) => {
   let additionalClass = "";
   let remove = () => {};
 
@@ -22,7 +22,7 @@ const Remover = ({ type, id, detailType, employeeIndex, removeDayOff, removeSche
       break;
     case "employee":
       additionalClass = "Remover-Employee";
-      remove = removeEmployee.bind(this, employeeIndex);
+      remove = removeEmployee.bind(this, employees, employeeIndex);
       break;
 
     default:
@@ -42,6 +42,12 @@ const Remover = ({ type, id, detailType, employeeIndex, removeDayOff, removeSche
 };
 
 
+const mapStateToProps = state => {
+  return {
+    employees: state.employees.employees
+  }
+}
+
 const mapDispatchToProps = dispatch => {
   return {
     // removeDayOff: id => dispatch({ type: actionTypes.REMOVE_DAYOFF, id }),
@@ -49,11 +55,11 @@ const mapDispatchToProps = dispatch => {
     // removeEmployee: employeeIndex => dispatch({ type: actionTypes.REMOVE_EMPLOYEE, employeeIndex })
     removeDayOff: id => dispatch(actionCreators.removeDayOff(id)),
     removeSchedule: (id, detailType) => dispatch(actionCreators.removeSchedule(id, detailType)),
-    removeEmployee: employeeIndex => dispatch(actionCreators.removeEmployee(employeeIndex))
+    removeEmployee: (employees, employeeIndex) => dispatch(actionCreators.removeEmployee(employees, employeeIndex))
   };
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Remover);

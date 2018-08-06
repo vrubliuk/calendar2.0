@@ -1,14 +1,38 @@
 import * as actionTypes from "./actionTypes"
+import * as API from "../utility/API"
 
-export const addEmployee = employeeName => {
+export const setEmployees = (employees) => {
   return {
-    type: actionTypes.ADD_EMPLOYEE,
-    employeeName
-  };
+    type: actionTypes.SET_EMPLOYEES,
+    employees
+  }
+}
+
+export const fetchEmployees = () => {
+  return dispatch => {
+    API.getEmployees().then(res=> {
+      dispatch(setEmployees(res.data));
+    })
+  }
+}
+
+export const addEmployee = (employees, employeeName) => {
+  return dispatch => {
+    let newEmployees = [...employees];
+    newEmployees.push(employeeName);
+    API.putEmployees(newEmployees).then(res=> {
+      console.log(res)
+      dispatch(setEmployees(res.data));
+    })
+  }
 };
-export const removeEmployee = employeeIndex => {
-  return {
-    type: actionTypes.REMOVE_EMPLOYEE,
-    employeeIndex
-  };
+
+export const removeEmployee = (employees, employeeIndex) => {
+  let newEmployees = [...employees];
+  newEmployees.splice(employeeIndex, 1);
+  return dispatch => {
+    API.putEmployees(newEmployees).then(res=> {
+      dispatch(setEmployees(res.data));
+    })
+  }
 };
