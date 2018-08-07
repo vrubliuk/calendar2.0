@@ -10,6 +10,7 @@ import * as actionCreators from "../../store/actions/actionCreators";
 class Main extends Component {
   componentDidMount(){
     this.props.fetchEmployees();
+    this.props.getLastUpdate();
   }
 
   render() {
@@ -33,7 +34,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchEmployees: () => dispatch(actionCreators.fetchEmployees())
+    fetchEmployees: () => dispatch(actionCreators.fetchEmployees()),
+    getLastUpdate: () => dispatch(actionCreators.getLastUpdate())
   };
 };
 
