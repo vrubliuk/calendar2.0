@@ -1,7 +1,7 @@
 import * as actionTypes from "./actionTypes"
 import * as API from "../utility/API"
 
-const setEmployees = (employees) => {
+export const setEmployees = (employees) => {
   return {
     type: actionTypes.SET_EMPLOYEES,
     employees

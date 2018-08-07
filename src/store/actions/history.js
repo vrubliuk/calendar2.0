@@ -1,7 +1,7 @@
 import * as actionTypes from "./actionTypes"
 import * as API from "../utility/API" 
 
-const setLastUpdate = (date) => {
+export const setLastUpdate = (date) => {
   return {
     type: actionTypes.SET_LAST_UPDATE,
     date
