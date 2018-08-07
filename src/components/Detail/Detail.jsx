@@ -2,7 +2,7 @@ import React from "react";
 import "./Detail.css";
 import { connect } from "react-redux";
 import Remover from "../Remover/Remover.jsx";
-import * as actionCreators from "../../store/actions/index"
+import * as actionCreators from "../../store/actions/actionCreators"
 import {colors} from "../../assets/colors"
 
 const Detail = ({ id, type, days, chosenMondays, draggedType, handleDataTransfer, handleMondaySelection }) => {

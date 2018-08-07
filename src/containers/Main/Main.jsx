@@ -5,7 +5,7 @@ import Employees from "../Employees/Employees";
 import Authentication from "../Authentication/Authentication.jsx";
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import * as actionCreators from "../../store/actions/index";
+import * as actionCreators from "../../store/actions/actionCreators";
 
 class Main extends Component {
   componentDidMount(){

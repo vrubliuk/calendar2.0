@@ -3,7 +3,7 @@ import "./Day.css";
 import { connect } from "react-redux";
 import todayIconPath from "../../assets/today.png";
 import Remover from "../Remover/Remover.jsx";
-import * as actionCreators from "../../store/actions/index"
+import * as actionCreators from "../../store/actions/actionCreators"
 
 const Day = ({ id, type, days, draggedType, handleHover, handleDataTransfer }) => {
   const year = id.split(".")[0];

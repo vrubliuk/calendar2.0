@@ -2,7 +2,7 @@ import React from "react";
 import "./Color.css";
 import Radium from "radium";
 import { connect } from "react-redux";
-import * as actionCreators from "../../store/actions/index"
+import * as actionCreators from "../../store/actions/actionCreators"
 import {colors} from "../../assets/colors"
 
 const Color = ({ name, setColor, chosenMondays, clearChosenMondays }) => {

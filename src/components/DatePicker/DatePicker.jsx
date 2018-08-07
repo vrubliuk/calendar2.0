@@ -2,7 +2,7 @@ import React from "react";
 import "./DatePicker.css";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import * as actionCreators from "../../store/actions/index"
+import * as actionCreators from "../../store/actions/actionCreators"
 
 const DatePicker = ({ calendarDate, editorDate, location, handleClickButtonPreviousMonth, handleClickButtonNextMonth, handleClickButtonPreviousYear, handleClickButtonNextYear }) => {
   const currentRoute = location.pathname;

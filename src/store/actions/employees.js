@@ -1,7 +1,7 @@
 import * as actionTypes from "./actionTypes"
 import * as API from "../utility/API"
 
-export const setEmployees = (employees) => {
+const setEmployees = (employees) => {
   return {
     type: actionTypes.SET_EMPLOYEES,
     employees
@@ -21,7 +21,6 @@ export const addEmployee = (employees, employeeName) => {
     let newEmployees = [...employees];
     newEmployees.push(employeeName);
     API.putEmployees(newEmployees).then(res=> {
-      console.log(res)
       dispatch(setEmployees(res.data));
     })
   }
