@@ -36,18 +36,24 @@ class LastUpdate extends Component {
     });
   };
 
+  componentDidUpdate(prevProps) {
+    if (this.props.lastUpdate !== prevProps.lastUpdate) {
+      this.updateTimeDifference();
+    }
+  }
   componentDidMount() {
-    this.updateTimeDifference();
     setInterval(this.updateTimeDifference, 60000); // update once per minute
   }
+
   render() {
-    return <div className="LastUpdate">Last updated {this.state.timeDifference}</div>;
+    const lastUpdate = this.state.timeDifference ? <div className="LastUpdate">Last updated {this.state.timeDifference}</div> : null;
+    return lastUpdate;
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
-    lastUpdate:state.history.lastUpdate
+    lastUpdate: state.history.lastUpdate
   };
 };
 

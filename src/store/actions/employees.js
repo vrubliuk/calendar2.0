@@ -8,13 +8,13 @@ export const setEmployees = (employees) => {
   }
 }
 
-export const fetchEmployees = () => {
-  return dispatch => {
-    API.getEmployees().then(res=> {
-      dispatch(setEmployees(res.data));
-    })
-  }
-}
+// export const fetchEmployees = () => {
+//   return dispatch => {
+//     API.getEmployees().then(res=> {
+//       dispatch(setEmployees(res.data));
+//     })
+//   }
+// }
 
 export const addEmployee = (employees, employeeName) => {
   return dispatch => {

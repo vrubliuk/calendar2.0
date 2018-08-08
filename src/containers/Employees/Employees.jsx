@@ -18,7 +18,7 @@ class Employees extends Component {
 
   handleClick = () => {
     if (!this.state.newEmployeeName) return;
-    this.props.addEmployee(this.props.employees, this.state.newEmployeeName);
+    this.props.addEmployee(this.state.newEmployeeName);
     this.setState({
       newEmployeeName: ""
     });
@@ -62,7 +62,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => {
   return {
     // addEmployee: employeeName => dispatch({ type: actionTypes.ADD_EMPLOYEE, employeeName })
-    addEmployee: (employees, employeeName) => dispatch(actionCreators.addEmployee(employees, employeeName))
+    addEmployee: (employeeName) => dispatch(actionCreators.addEmployee(employeeName))
   };
 };
 

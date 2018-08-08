@@ -8,13 +8,13 @@ export const setLastUpdate = (date) => {
   }
 }
 
-export const getLastUpdate = () => {
-  return dispatch => {
-    API.getLastUpdate().then((res)=> {
-      dispatch(setLastUpdate(res.data))
-    })
-  }
-}
+// export const getLastUpdate = () => {
+//   return dispatch => {
+//     API.getLastUpdate().then((res)=> {
+//       dispatch(setLastUpdate(res.data))
+//     })
+//   }
+// }
 
 export const putLastUpdate = (date) => {
   return dispatch => {
