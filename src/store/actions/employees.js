@@ -1,5 +1,5 @@
 import * as actionTypes from "./actionTypes"
-import * as API from "../utility/API"
+import * as API from "../utility/endpoints"
 
 export const setEmployees = (employees) => {
   return {
