@@ -1,5 +1,13 @@
 import axios from "axios";
 
+export const getDays = () => {
+  return axios.get("https://calendar-0002.firebaseio.com/days.json");
+}
+
+export const patchDays = (days) => {
+  return axios.patch("https://calendar-0002.firebaseio.com/days.json", days);
+}
+
 export const getEmployees = () => {
   return axios.get("https://calendar-0002.firebaseio.com/employees.json");
 };

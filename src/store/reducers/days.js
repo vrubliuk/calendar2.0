@@ -35,6 +35,14 @@ const initialState = {
   }
 };
 
+const updateDays = (state, action) => {
+  let days = { ...state.days };
+  for (let day in action.daysWithChanges) {
+    days[day] = action.daysWithChanges[day];
+  }
+  return updateState(state, { days });
+}
+
 const updateDayOff = (state, action) => {
   let days = { ...state.days };
   let idExists = action.payload.id in days;
@@ -99,16 +107,20 @@ const setColor = (state, action) => {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.UPDATE_DAYOFF:
-      return updateDayOff(state, action);
-    case actionTypes.REMOVE_DAYOFF:
-      return removeDayOff(state, action);
-    case actionTypes.UPDATE_SCHEDULE:
-      return updateSchedule(state, action);
-    case actionTypes.REMOVE_SCHEDULE:
-      return removeSchedule(state, action);
-    case actionTypes.SET_COLOR:
-      return setColor(state, action);
+    case actionTypes.UPDATE_DAYS:
+      return updateDays(state, action)
+
+
+    // case actionTypes.UPDATE_DAYOFF:
+    //   return updateDayOff(state, action);
+    // case actionTypes.REMOVE_DAYOFF:
+    //   return removeDayOff(state, action);
+    // case actionTypes.UPDATE_SCHEDULE:
+    //   return updateSchedule(state, action);
+    // case actionTypes.REMOVE_SCHEDULE:
+    //   return removeSchedule(state, action);
+    // case actionTypes.SET_COLOR:
+    //   return setColor(state, action);
     default:
       return state;
   }

@@ -13,3 +13,4 @@ export const SET_COLOR = "SET_COLOR";
 export const SET_DRAGGED_TYPE = "SET_DRAGGED_TYPE";
 export const SET_EMPLOYEES = "SET_EMPLOYEES"
 export const SET_LAST_UPDATE = "SET_LAST_UPDATE"
+export const UPDATE_DAYS = "UPDATE_DAYS"
