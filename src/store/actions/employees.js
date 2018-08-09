@@ -1,5 +1,6 @@
 import * as actionTypes from "./actionTypes"
-import * as API from "../utility/endpoints"
+import * as API from "../utility/API"
+import { setLastUpdate } from "./history";
 
 export const setEmployees = (employees) => {
   return {
@@ -8,30 +9,36 @@ export const setEmployees = (employees) => {
   }
 }
 
-// export const fetchEmployees = () => {
-//   return dispatch => {
-//     API.getEmployees().then(res=> {
-//       dispatch(setEmployees(res.data));
-//     })
-//   }
-// }
-
-export const addEmployee = (employees, employeeName) => {
-  return dispatch => {
-    let newEmployees = [...employees];
+export const addEmployee = employeeName => {
+  return (dispatch, getState) => {
+    const newEmployees = [...getState().employees.employees];
     newEmployees.push(employeeName);
-    API.putEmployees(newEmployees).then(res=> {
-      dispatch(setEmployees(res.data));
-    })
-  }
+    API.putEmployees(newEmployees)
+      .then(res => {
+        dispatch(setEmployees(res.data));
+      })
+      .then(() => {
+        return API.putLastUpdate(new Date().getTime());
+      })
+      .then(res => {
+        dispatch(setLastUpdate(res.data));
+      });
+  };
 };
 
-export const removeEmployee = (employees, employeeIndex) => {
-  let newEmployees = [...employees];
-  newEmployees.splice(employeeIndex, 1);
-  return dispatch => {
-    API.putEmployees(newEmployees).then(res=> {
-      dispatch(setEmployees(res.data));
-    })
-  }
+export const removeEmployee = employeeIndex => {
+  return (dispatch, getState) => {
+    const newEmployees = [...getState().employees.employees];
+    newEmployees.splice(employeeIndex, 1);
+    API.putEmployees(newEmployees)
+      .then(res => {
+        dispatch(setEmployees(res.data));
+      })
+      .then(() => {
+        return API.putLastUpdate(new Date().getTime());
+      })
+      .then(res => {
+        dispatch(setLastUpdate(res.data));
+      });
+  };
 };
