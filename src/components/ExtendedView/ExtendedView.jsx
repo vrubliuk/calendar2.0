@@ -35,14 +35,14 @@ const ExtendedView = ({ editorDate }) => {
 
   const daysQuantityPreviousYearLastMonth = new Date(year, 1, 0).getDate();
   for (let day = placeholdersQuantity - 1; day >= 0; day--) {
-    const id = `${year - 1}.12.${daysQuantityPreviousYearLastMonth - day}`;
+    const id = `${year - 1}-12-${daysQuantityPreviousYearLastMonth - day}`;
     dayIds.push(id);
   }
 
   for (let month = 0; month < 12; month++) {
     const daysQuantity = new Date(year, month + 1, 0).getDate();
     for (let day = 1; day <= daysQuantity; day++) {
-      const id = `${year}.${month + 1}.${day}`;
+      const id = `${year}-${month + 1}-${day}`;
       dayIds.push(id);
       if (day === 1) {
         const monthName = new Date(year, month, day).toLocaleString("en-US", { month: "long" });
@@ -68,7 +68,7 @@ const ExtendedView = ({ editorDate }) => {
   });
 
   const days = dayIds.map((id, i) => {
-    return id.split(".")[0] < year ? <Placeholder key={i} type="Placeholder-Day-Small" /> : <Day key={i} id={id} type="Day-Small" />;
+    return id.split("-")[0] < year ? <Placeholder key={i} type="Placeholder-Day-Small" /> : <Day key={i} id={id} type="Day-Small" />;
   });
 
   let mondayIds = [];

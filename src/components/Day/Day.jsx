@@ -6,12 +6,12 @@ import Remover from "../Remover/Remover.jsx";
 import * as actionCreators from "../../store/actions/actionCreators"
 
 const Day = ({ id, type, days, draggedType, handleHover, handleDataTransfer }) => {
-  const year = id.split(".")[0];
-  const month = +id.split(".")[1] - 1;
-  const day = id.split(".")[2];
+  const year = id.split("-")[0];
+  const month = +id.split("-")[1] - 1;
+  const day = id.split("-")[2];
   const dayIndexInWeek = new Date(year, month, day).getDay();
   const dayType = dayIndexInWeek === 0 || dayIndexInWeek === 6 ? "Day-Weekend" : "Day-Working";
-  const todayId = `${new Date().getFullYear()}.${new Date().getMonth() + 1}.${new Date().getDate()}`;
+  const todayId = `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`;
   const isToday = id === todayId;
   const confirmedDayOffExists = id in days && "confirmedDayOff" in days[id];
   const pendingDayOffExists = id in days && "pendingDayOff" in days[id];
