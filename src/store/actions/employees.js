@@ -1,44 +1,37 @@
-import * as actionTypes from "./actionTypes"
-import * as API from "../utility/API"
-import { setLastUpdate } from "./status";
+import * as actionTypes from "./actionTypes";
+import * as API from "../utility/API";
+import { setLastUpdate, showSavingIndicator, hideSavingIndicator } from "./status";
 
-export const setEmployees = (employees) => {
+export const setEmployees = employees => {
   return {
     type: actionTypes.SET_EMPLOYEES,
     employees
-  }
-}
-
-export const addEmployee = employeeName => {
-  return (dispatch, getState) => {
-    const newEmployees = [...getState().employees.employees];
-    newEmployees.push(employeeName);
-    API.putEmployees(newEmployees)
-      .then(res => {
-        dispatch(setEmployees(res.data));
-      })
-      .then(() => {
-        return API.putLastUpdate(new Date().getTime());
-      })
-      .then(res => {
-        dispatch(setLastUpdate(res.data));
-      });
   };
 };
 
-export const removeEmployee = employeeIndex => {
+export const toogleEmployee = (option, employeeName, employeeIndex) => {
   return (dispatch, getState) => {
-    const newEmployees = [...getState().employees.employees];
-    newEmployees.splice(employeeIndex, 1);
+    const oldEmployees = getState().employees.employees;
+    const newEmployees = [...oldEmployees];
+    if (option === "add") {
+      newEmployees.push(employeeName);
+    } else if (option === "remove") {
+      newEmployees.splice(employeeIndex, 1);
+    }
+    dispatch(setEmployees(newEmployees));
+    dispatch(showSavingIndicator());
     API.putEmployees(newEmployees)
-      .then(res => {
-        dispatch(setEmployees(res.data));
-      })
       .then(() => {
         return API.putLastUpdate(new Date().getTime());
       })
       .then(res => {
         dispatch(setLastUpdate(res.data));
+        dispatch(hideSavingIndicator());
+      })
+      .catch(() => {
+        dispatch(setEmployees(oldEmployees));
+        dispatch(hideSavingIndicator());
+        alert("Something went wrong :) Please contact Val Rubliuk for assistance.");
       });
   };
 };

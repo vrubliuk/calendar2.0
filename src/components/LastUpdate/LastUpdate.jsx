@@ -42,6 +42,7 @@ class LastUpdate extends Component {
     }
   }
   componentDidMount() {
+    this.updateTimeDifference();
     setInterval(this.updateTimeDifference, 60000); // update once per minute
   }
 

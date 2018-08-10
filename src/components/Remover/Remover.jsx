@@ -3,7 +3,7 @@ import "./Remover.css";
 import { connect } from "react-redux";
 import * as actionCreators from "../../store/actions/actionCreators"
 
-const Remover = ({ type, id, detailType, employeeIndex, removeDayOff, removeSchedule, removeEmployee }) => {
+const Remover = ({ type, id, detailType, employeeIndex, removeDayOff, removeSchedule, toogleEmployee }) => {
   let additionalClass = "";
   let remove = () => {};
 
@@ -22,7 +22,7 @@ const Remover = ({ type, id, detailType, employeeIndex, removeDayOff, removeSche
       break;
     case "employee":
       additionalClass = "Remover-Employee";
-      remove = removeEmployee.bind(this, employeeIndex);
+      remove = toogleEmployee.bind(this, "remove", null, employeeIndex);
       break;
 
     default:
@@ -48,7 +48,7 @@ const mapDispatchToProps = dispatch => {
     // removeEmployee: employeeIndex => dispatch({ type: actionTypes.REMOVE_EMPLOYEE, employeeIndex })
     removeDayOff: id => dispatch(actionCreators.removeDayOff(id)),
     removeSchedule: (id, detailType) => dispatch(actionCreators.removeSchedule(id, detailType)),
-    removeEmployee: (employeeIndex) => dispatch(actionCreators.removeEmployee(employeeIndex))
+    toogleEmployee: (action, employeeName, employeeIndex) => dispatch(actionCreators.toogleEmployee(action, employeeName, employeeIndex))
   };
 };
 

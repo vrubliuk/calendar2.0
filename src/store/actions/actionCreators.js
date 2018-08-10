@@ -1,6 +1,6 @@
 export { updateDayOff, updateSchedule, removeDayOff, removeSchedule, setColor } from "./days";
 
-export { addEmployee, removeEmployee } from "./employees";
+export { toogleEmployee } from "./employees";
 
 export { previousMonth, nextMonth, previousYear, nextYear, hoverDay, toggleMondaySelection, clearChosenMondays, setDraggedType } from "./temporary";
 

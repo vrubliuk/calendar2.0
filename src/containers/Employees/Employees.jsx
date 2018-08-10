@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./Employees.css";
 import { connect } from "react-redux";
 import Remover from "../../components/Remover/Remover";
-import * as actionCreators from "../../store/actions/actionCreators"
+import * as actionCreators from "../../store/actions/actionCreators";
 
 class Employees extends Component {
   state = {
@@ -18,7 +18,7 @@ class Employees extends Component {
 
   handleClick = () => {
     if (!this.state.newEmployeeName) return;
-    this.props.addEmployee(this.state.newEmployeeName);
+    this.props.toogleEmployee("add", this.state.newEmployeeName);
     this.setState({
       newEmployeeName: ""
     });
@@ -54,15 +54,14 @@ class Employees extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     employees: state.employees.employees
   };
 };
 const mapDispatchToProps = dispatch => {
   return {
-    // addEmployee: employeeName => dispatch({ type: actionTypes.ADD_EMPLOYEE, employeeName })
-    addEmployee: (employeeName) => dispatch(actionCreators.addEmployee(employeeName))
+    toogleEmployee: (action, employeeName) => dispatch(actionCreators.toogleEmployee(action, employeeName))
   };
 };
 

@@ -3,7 +3,7 @@ import { updateState } from "../utility/updateState";
 
 const initialState = {
   lastUpdate: null,
-  savingIndicator: true
+  savingIndicator: false
 };
 
 const setLastUpdate = (state, action) => {
