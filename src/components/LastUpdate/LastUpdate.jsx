@@ -47,7 +47,7 @@ class LastUpdate extends Component {
   }
 
   render() {
-    const lastUpdate = this.state.timeDifference ? <div className="LastUpdate">Last update: {this.state.timeDifference}</div> : null;
+    const lastUpdate = this.props.lastUpdate ? <div className="LastUpdate">Last update: {this.state.timeDifference}</div> : null;
     return lastUpdate;
   }
 }
