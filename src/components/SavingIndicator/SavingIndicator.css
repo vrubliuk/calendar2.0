@@ -1,0 +1,12 @@
+.SavingIndicator {
+  color: white;
+  font-size: 1.2rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.SavingIndicator .Loader {
+  font-size: 4px;
+  margin-right: 20px;
+}

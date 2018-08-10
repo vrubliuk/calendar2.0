@@ -1,6 +1,6 @@
 import * as actionTypes from "./actionTypes"
 import * as API from "../utility/API"
-import { setLastUpdate } from "./history";
+import { setLastUpdate } from "./status";
 
 export const setEmployees = (employees) => {
   return {

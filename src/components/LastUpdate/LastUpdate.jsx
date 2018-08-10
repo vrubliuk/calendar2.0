@@ -46,14 +46,14 @@ class LastUpdate extends Component {
   }
 
   render() {
-    const lastUpdate = this.state.timeDifference ? <div className="LastUpdate">Last updated {this.state.timeDifference}</div> : null;
+    const lastUpdate = this.state.timeDifference ? <div className="LastUpdate">Last update: {this.state.timeDifference}</div> : null;
     return lastUpdate;
   }
 }
 
 const mapStateToProps = state => {
   return {
-    lastUpdate: state.history.lastUpdate
+    lastUpdate: state.status.lastUpdate
   };
 };
 

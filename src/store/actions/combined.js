@@ -1,6 +1,6 @@
 import * as API from "../utility/API";
 import { setEmployees } from "./employees";
-import { setLastUpdate } from "./history";
+import { setLastUpdate } from "./status";
 import {updateDays} from "./days"
 
 export const fetchDatabase = () => {

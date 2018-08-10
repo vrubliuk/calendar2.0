@@ -7,14 +7,14 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
-import history from "./store/reducers/history";
+import status from "./store/reducers/status";
 import employees from "./store/reducers/employees";
 import temporary from "./store/reducers/temporary";
 import authorization from "./store/reducers/authorization";
 import days from "./store/reducers/days";
 
 const rootReducer = combineReducers({
-  history,
+  status,
   employees,
   temporary,
   authorization,
