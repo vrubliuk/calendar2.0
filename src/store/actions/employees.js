@@ -11,6 +11,7 @@ export const setEmployees = employees => {
 
 export const toogleEmployee = (option, employeeName, employeeIndex) => {
   return (dispatch, getState) => {
+    dispatch(showSavingIndicator());
     const oldEmployees = getState().employees.employees;
     const newEmployees = [...oldEmployees];
     if (option === "add") {
@@ -19,7 +20,6 @@ export const toogleEmployee = (option, employeeName, employeeIndex) => {
       newEmployees.splice(employeeIndex, 1);
     }
     dispatch(setEmployees(newEmployees));
-    dispatch(showSavingIndicator());
     API.putEmployees(newEmployees)
       .then(() => {
         return API.putLastUpdate(new Date().getTime());
