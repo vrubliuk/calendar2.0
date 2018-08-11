@@ -3,7 +3,7 @@ import "./Day.css";
 import { connect } from "react-redux";
 import todayIconPath from "../../assets/today.png";
 import Remover from "../Remover/Remover.jsx";
-import * as actionCreators from "../../store/actions/actionCreators"
+import * as actionCreators from "../../store/actions/actionCreators";
 
 const Day = ({ id, type, days, draggedType, handleHover, handleDataTransfer }) => {
   const year = id.split("-")[0];
@@ -33,7 +33,7 @@ const Day = ({ id, type, days, draggedType, handleHover, handleDataTransfer }) =
   const onMouseOut = dayType === "Day-Working" ? handleHover.bind(this, null) : null;
   let handleDragOver = null;
   let handleDrop = null;
-  if (draggedType === "confirmedDayOff" || draggedType === "pendingDayOff") {
+  if (dayType === "Day-Working" && (draggedType === "confirmedDayOff" || draggedType === "pendingDayOff")) {
     handleDragOver = e => {
       e.preventDefault();
     };
@@ -55,7 +55,7 @@ const Day = ({ id, type, days, draggedType, handleHover, handleDataTransfer }) =
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     days: state.days.days,
     draggedType: state.temporary.draggedType
@@ -67,7 +67,7 @@ const mapDispatchToProps = dispatch => {
     // handleHover: id => dispatch({ type: actionTypes.HOVER_DAY, id }),
     // handleDataTransfer: (id, type, name) => dispatch({ type: actionTypes.UPDATE_DAYOFF, payload: { id, type, name } })
     handleHover: id => dispatch(actionCreators.hoverDay(id)),
-    handleDataTransfer: (id, type, name) => dispatch( actionCreators.updateDayOff(id, type, name))
+    handleDataTransfer: (id, type, name) => dispatch(actionCreators.updateDayOff(id, type, name))
   };
 };
 

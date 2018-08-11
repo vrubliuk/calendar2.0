@@ -46,9 +46,7 @@ const Basket = ({ type, employees }) => {
   return (
     <div className={`Basket ${additionalClass}`}>
       <div className="Basket__Header">{headerText}</div>
-      <div className="Basket__Body__Wrapper">
-        <div className="Basket__Body">{content}{placeholder}</div>
-      </div>
+      <div className="Basket__Body">{content}{placeholder}</div>
       <div className="Basket__Footer" />
     </div>
   );
