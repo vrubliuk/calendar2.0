@@ -9,12 +9,7 @@ export const updateDays = daysWithChanges => {
   };
 };
 
-const removeDay = id => {
-  return {
-    type: actionTypes.REMOVE_DAY,
-    id
-  };
-};
+
 
 export const updateDayOff = (id, type, name) => {
   return (dispatch, getState) => {
@@ -22,7 +17,7 @@ export const updateDayOff = (id, type, name) => {
     const oldDays = getState().days.days;
     let newDay = {};
     const idExists = id in oldDays;
-    const oldDay = idExists ? { [id]: JSON.parse(JSON.stringify(getState().days.days[id])) } : null;
+    const oldDay = idExists ? { [id]: JSON.parse(JSON.stringify(getState().days.days[id])) } : {[id]:{}};
     const typeExists = idExists && type in oldDays[id];
     let errorsCounter = 0;
     if (typeExists) {
@@ -50,7 +45,7 @@ export const updateDayOff = (id, type, name) => {
     dispatch(updateDays(newDay));
     API.patchDays(newDay)
       .then(null, () => {
-        oldDay ? dispatch(updateDays(oldDay)) : dispatch(removeDay(id));
+        dispatch(updateDays(oldDay))
         dispatch(hideSavingIndicator());
         errorsCounter++;
         return Promise.reject();
@@ -110,12 +105,121 @@ export const removeDayOff = id => {
   };
 };
 
+// const updateSchedule = (state, action) => {
+//   let days = { ...state.days };
+//   let { id, type, name } = action.payload;
+//   for (let i = 0; i < 5; i++) {
+//     let day = new Date(id.split("-")[0], id.split("-")[1] - 1, id.split("-")[2]);
+//     day.setDate(day.getDate() + i);
+//     const currentId = `${day.getFullYear()}.${day.getMonth() + 1}.${day.getDate()}`;
+//     currentId in days
+//       ? (days[currentId][type] = name)
+//       : (days[currentId] = {
+//           [type]: name
+//         });
+//   }
+//   return updateState(state, { days });
+// };
+
+
 export const updateSchedule = (id, type, name) => {
-  return (dispatch, getState) => {};
+  return (dispatch, getState) => {
+    dispatch(showSavingIndicator());
+    const oldDays = getState().days.days;
+    const oldChosenDays = {};
+    const newChosenDays = {};
+    for (let i = 0; i < 5; i++) {
+      let day = new Date(id.split("-")[0], id.split("-")[1] - 1, id.split("-")[2]);
+      day.setDate(day.getDate() + i);
+      const currentId = `${day.getFullYear()}-${day.getMonth() + 1}-${day.getDate()}`;
+      if (currentId in oldDays) {
+        oldChosenDays[currentId] = oldDays[currentId];
+        newChosenDays[currentId] = JSON.parse(JSON.stringify(oldChosenDays[currentId]))
+        newChosenDays[currentId][type] = name;
+      } else {
+        oldChosenDays[currentId] = {};
+        newChosenDays[currentId] = {
+          [type]: name
+        }
+      }
+    }
+    let errorsCounter = 0;
+    dispatch(updateDays(newChosenDays));
+    API.patchDays(newChosenDays)
+      .then(null, () => {
+        dispatch(updateDays(oldChosenDays))
+        dispatch(hideSavingIndicator());
+        errorsCounter++;
+        return Promise.reject();
+      })
+      .then(() => {
+        return API.putLastUpdate(new Date().getTime());
+      })
+      .then(
+        res => {
+          dispatch(setLastUpdate(res.data));
+          dispatch(hideSavingIndicator());
+        },
+        () => {
+          dispatch(hideSavingIndicator());
+          errorsCounter ? alert("Can't update the schedule. Please contact the administrator.") : alert("Can't set the date of the last update. Please contact the administrator.");
+        }
+      );
+  };
 };
 
+// const removeSchedule = (state, action) => {
+//   let days = { ...state.days };
+//   const colorExists = "colors" in days[action.payload.id] && action.payload.detailType in days[action.payload.id].colors;
+//   delete days[action.payload.id][action.payload.detailType];
+//   if (colorExists) delete days[action.payload.id].colors[action.payload.detailType];
+//   return updateState(state, { days });
+// };
+
+
 export const removeSchedule = (id, detailType) => {
-  return (dispatch, getState) => {};
+  return (dispatch, getState) => {
+    dispatch(showSavingIndicator());
+    const oldDays = getState().days.days;
+    const oldChosenDays = {};
+    const newChosenDays = {};
+    for (let i = 0; i < 5; i++) {
+      let day = new Date(id.split("-")[0], id.split("-")[1] - 1, id.split("-")[2]);
+      day.setDate(day.getDate() + i);
+      const currentId = `${day.getFullYear()}-${day.getMonth() + 1}-${day.getDate()}`;
+      oldChosenDays[currentId] = oldDays[currentId];
+      newChosenDays[currentId] = JSON.parse(JSON.stringify(oldChosenDays[currentId]))
+      delete newChosenDays[currentId][detailType];
+      const colorExists = "colors" in newChosenDays[currentId] && detailType in newChosenDays[currentId].colors;
+      if (colorExists) delete newChosenDays[currentId].colors[detailType];
+    }
+    let errorsCounter = 0;
+    dispatch(updateDays(newChosenDays));
+    API.patchDays(newChosenDays)
+      .then(null, () => {
+        dispatch(updateDays(oldChosenDays))
+        dispatch(hideSavingIndicator());
+        errorsCounter++;
+        return Promise.reject();
+      })
+      .then(() => {
+        return API.putLastUpdate(new Date().getTime());
+      })
+      .then(
+        res => {
+          dispatch(setLastUpdate(res.data));
+          dispatch(hideSavingIndicator());
+        },
+        () => {
+          dispatch(hideSavingIndicator());
+          errorsCounter ? alert("Can't remove the schedule. Please contact the administrator.") : alert("Can't set the date of the last update. Please contact the administrator.");
+        }
+      );
+
+
+
+
+  };
 };
 
 export const setColor = (color, chosenMondays) => {

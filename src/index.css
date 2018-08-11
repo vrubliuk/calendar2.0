@@ -52,7 +52,7 @@ a {
   border-radius: 50%;
   position: relative;
   text-indent: -9999em;
-  animation: load 1.3s infinite linear;
+  animation: load 1s infinite linear;
   transform: translateZ(0);
 }
 @-webkit-keyframes load {
