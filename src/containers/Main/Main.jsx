@@ -1,29 +1,37 @@
-import React, { Component } from "react";
+import React from "react";
 import Calendar from "../Calendar/Calendar.jsx";
 import Editor from "../Editor/Editor.jsx";
 import Employees from "../Employees/Employees";
 import Authentication from "../Authentication/Authentication.jsx";
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import * as actionCreators from "../../store/actions/actionCreators";
 
-class Main extends Component {
-  componentDidMount(){
-    this.props.fetchDatabase()
-  }
+// class Main extends Component {
+//   render() {
+//     return (
+//       <Switch>
+//         <Route exact path="/" component={Calendar} />
+//         <Route exact path="/editor" render={() => (this.props.authorized ? <Editor /> : <Redirect to="/authentication" />)} />
+//         <Route exact path="/employees" render={() => (this.props.authorized ? <Employees /> : <Redirect to="/authentication" />)} />
+//         <Route exact path="/authentication" component={Authentication} />
+//         <Redirect to="/" />
+//       </Switch>
+//     );
+//   }
+// }
 
-  render() {
-    return (
-      <Switch>
-        <Route exact path="/" component={Calendar} />
-        <Route exact path="/editor" render={() => (this.props.authorized ? <Editor /> : <Redirect to="/authentication" />)} />
-        <Route exact path="/employees" render={() => (this.props.authorized ? <Employees /> : <Redirect to="/authentication" />)} />
-        <Route exact path="/authentication" component={Authentication} />
-        <Redirect to="/" />
-      </Switch>
-    );
-  }
+const Main = ({authorized}) => {
+  return (
+    <Switch>
+      <Route exact path="/" component={Calendar} />
+      <Route exact path="/editor" render={() => (authorized ? <Editor /> : <Redirect to="/authentication" />)} />
+      <Route exact path="/employees" render={() => (authorized ? <Employees /> : <Redirect to="/authentication" />)} />
+      <Route exact path="/authentication" component={Authentication} />
+      <Redirect to="/" />
+    </Switch>
+  );
 }
+
 
 const mapStateToProps = state => {
   return {
@@ -31,15 +39,10 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    fetchDatabase: () => dispatch(actionCreators.fetchDatabase()),
-  };
-};
-
 export default withRouter(
   connect(
-    mapStateToProps,
-    mapDispatchToProps
+    mapStateToProps
   )(Main)
 );
+
+

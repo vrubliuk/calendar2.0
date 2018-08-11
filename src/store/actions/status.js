@@ -1,5 +1,11 @@
 import * as actionTypes from "./actionTypes";
 
+export const hideSpinner = () => {
+  return {
+    type: actionTypes.HIDE_SPINNER
+  };
+};
+
 export const setLastUpdate = date => {
   return {
     type: actionTypes.SET_LAST_UPDATE,
