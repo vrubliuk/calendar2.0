@@ -2,12 +2,20 @@ import * as actionTypes from "../actions/actionTypes";
 import { updateState } from "../utility/updateState";
 
 const initialState = {
-  authorized: true,
+  authorized: false,
+  idToken: null,
+  localId: null,
+  refreshToken: null,
   error: false
 };
 
-const updateAuthrized = (state, action) => {
-  return updateState(state, { authorized: action.status });
+const updateAuthData = (state, action) => {
+  return updateState(state, { 
+    authorized: true,
+    idToken: action.idToken,
+    localId: action.localId,
+    refreshToken: action.refreshToken,
+   });
 };
 
 const toggleError = state => {
@@ -16,8 +24,8 @@ const toggleError = state => {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.UPDATE_AUTHORIZED:
-      return updateAuthrized(state, action);
+    case actionTypes.UPDATE_AUTH_DATA:
+      return updateAuthData(state, action);
     case actionTypes.TOGGLE_ERROR:
       return toggleError(state);
     default:
