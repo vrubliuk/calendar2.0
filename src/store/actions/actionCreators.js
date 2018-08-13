@@ -7,3 +7,5 @@ export { previousMonth, nextMonth, previousYear, nextYear, hoverDay, toggleMonda
 // export {getLastUpdate} from "./status";
 
 export {fetchDatabase } from "./combined";
+
+export {logIn} from "./authorization"

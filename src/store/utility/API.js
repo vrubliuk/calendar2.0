@@ -23,3 +23,7 @@ export const getLastUpdate = () => {
 export const putLastUpdate = (date) => {
   return axios.put("https://calendar-0002.firebaseio.com/lastUpdate.json", date);
 };
+
+export const postEmailPassword = (email, password) => {
+  return axios.post("https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyDvnj1qm12fGIGWGsttWoMgHK254xT0nyw", {email, password, returnSecureToken: true})
+}
