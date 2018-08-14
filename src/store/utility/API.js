@@ -4,24 +4,24 @@ export const getDays = () => {
   return axios.get("https://calendar-0002.firebaseio.com/days.json");
 }
 
-export const patchDays = (days) => {
-  return axios.patch("https://calendar-0002.firebaseio.com/days.json", days);
+export const patchDays = (token, days) => {
+  return axios.patch(`https://calendar-0002.firebaseio.com/days.json?auth=${token}`, days);
 }
 
 export const getEmployees = () => {
   return axios.get("https://calendar-0002.firebaseio.com/employees.json");
 };
 
-export const putEmployees = (employees) => {
-  return axios.put("https://calendar-0002.firebaseio.com/employees.json", employees);
+export const putEmployees = (token, employees) => {
+  return axios.put(`https://calendar-0002.firebaseio.com/employees.json?auth=${token}`, employees);
 };
 
 export const getLastUpdate = () => {
   return axios.get("https://calendar-0002.firebaseio.com/lastUpdate.json");
 };
 
-export const putLastUpdate = (date) => {
-  return axios.put("https://calendar-0002.firebaseio.com/lastUpdate.json", date);
+export const putLastUpdate = (token, date) => {
+  return axios.put(`https://calendar-0002.firebaseio.com/lastUpdate.json?auth=${token}`, date);
 };
 
 export const postEmailPassword = (email, password) => {

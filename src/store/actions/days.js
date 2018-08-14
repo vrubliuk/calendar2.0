@@ -12,6 +12,7 @@ export const updateDays = daysWithChanges => {
 export const updateDayOff = (id, type, name) => {
   return (dispatch, getState) => {
     dispatch(showSavingIndicator());
+    const token = getState().authorization.idToken;
     const oldDays = getState().days.days;
     let newDay = {};
     const idExists = id in oldDays;
@@ -41,7 +42,7 @@ export const updateDayOff = (id, type, name) => {
       };
     }
     dispatch(updateDays(newDay));
-    API.patchDays(newDay)
+    API.patchDays(token, newDay)
       .then(null, () => {
         dispatch(updateDays(oldDay));
         dispatch(hideSavingIndicator());
@@ -49,7 +50,7 @@ export const updateDayOff = (id, type, name) => {
         return Promise.reject();
       })
       .then(() => {
-        return API.putLastUpdate(new Date().getTime());
+        return API.putLastUpdate(token, new Date().getTime());
       })
       .then(
         res => {
@@ -67,6 +68,7 @@ export const updateDayOff = (id, type, name) => {
 export const removeDayOff = id => {
   return (dispatch, getState) => {
     dispatch(showSavingIndicator());
+    const token = getState().authorization.idToken;
     const oldDay = {
       [id]: JSON.parse(JSON.stringify(getState().days.days[id]))
     };
@@ -79,7 +81,7 @@ export const removeDayOff = id => {
     if (pendingDayOffExists) delete newDay[id].pendingDayOff;
     let errorsCounter = 0;
     dispatch(updateDays(newDay));
-    API.patchDays(newDay)
+    API.patchDays(token, newDay)
       .then(null, () => {
         dispatch(updateDays(oldDay));
         dispatch(hideSavingIndicator());
@@ -87,7 +89,7 @@ export const removeDayOff = id => {
         return Promise.reject();
       })
       .then(() => {
-        return API.putLastUpdate(new Date().getTime());
+        return API.putLastUpdate(token, new Date().getTime());
       })
       .then(
         res => {
@@ -106,6 +108,7 @@ export const removeDayOff = id => {
 export const updateSchedule = (id, type, name) => {
   return (dispatch, getState) => {
     dispatch(showSavingIndicator());
+    const token = getState().authorization.idToken;
     const oldDays = getState().days.days;
     const oldChosenDays = {};
     const newChosenDays = {};
@@ -126,7 +129,7 @@ export const updateSchedule = (id, type, name) => {
     }
     let errorsCounter = 0;
     dispatch(updateDays(newChosenDays));
-    API.patchDays(newChosenDays)
+    API.patchDays(token, newChosenDays)
       .then(null, () => {
         dispatch(updateDays(oldChosenDays));
         dispatch(hideSavingIndicator());
@@ -134,7 +137,7 @@ export const updateSchedule = (id, type, name) => {
         return Promise.reject();
       })
       .then(() => {
-        return API.putLastUpdate(new Date().getTime());
+        return API.putLastUpdate(token, new Date().getTime());
       })
       .then(
         res => {
@@ -152,6 +155,7 @@ export const updateSchedule = (id, type, name) => {
 export const removeSchedule = (id, detailType) => {
   return (dispatch, getState) => {
     dispatch(showSavingIndicator());
+    const token = getState().authorization.idToken;
     const oldDays = getState().days.days;
     const oldChosenDays = {};
     const newChosenDays = {};
@@ -167,7 +171,7 @@ export const removeSchedule = (id, detailType) => {
     }
     let errorsCounter = 0;
     dispatch(updateDays(newChosenDays));
-    API.patchDays(newChosenDays)
+    API.patchDays(token, newChosenDays)
       .then(null, () => {
         dispatch(updateDays(oldChosenDays));
         dispatch(hideSavingIndicator());
@@ -175,7 +179,7 @@ export const removeSchedule = (id, detailType) => {
         return Promise.reject();
       })
       .then(() => {
-        return API.putLastUpdate(new Date().getTime());
+        return API.putLastUpdate(token, new Date().getTime());
       })
       .then(
         res => {
@@ -193,6 +197,7 @@ export const removeSchedule = (id, detailType) => {
 export const setColor = (color, chosenMondays) => {
   return (dispatch, getState) => {
     dispatch(showSavingIndicator());
+    const token = getState().authorization.idToken;
     const oldDays = getState().days.days;
     const oldChosenMondays = {};
     const newChosenMondays = {};
@@ -212,7 +217,7 @@ export const setColor = (color, chosenMondays) => {
     });
     let errorsCounter = 0;
     dispatch(updateDays(newChosenMondays));
-    API.patchDays(newChosenMondays)
+    API.patchDays(token, newChosenMondays)
       .then(null, () => {
         dispatch(updateDays(oldChosenMondays));
         dispatch(hideSavingIndicator());
@@ -220,7 +225,7 @@ export const setColor = (color, chosenMondays) => {
         return Promise.reject();
       })
       .then(() => {
-        return API.putLastUpdate(new Date().getTime());
+        return API.putLastUpdate(token, new Date().getTime());
       })
       .then(
         res => {
