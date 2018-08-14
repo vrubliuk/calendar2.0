@@ -21,10 +21,10 @@ class Authentication extends Component {
     this.props.logIn(this.state.email, this.state.password);
   };
 
-  componentDidUpdate() {
-    if (this.props.idToken) this.props.history.goBack()
+  componentWillUnmount() {
+    this.props.setPreviousRoute(null);
   }
- 
+
   render() {
     const errorMessage = this.props.error ? <div className="Authentication__Error">Incorrect email address or password</div> : null;
     return (
@@ -50,14 +50,14 @@ class Authentication extends Component {
 
 const mapStateToProps = state => {
   return {
-    error: state.authorization.error,
-    idToken: state.authorization.idToken
+    error: state.authorization.error
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    logIn: (email, password) => dispatch(actionCreators.logIn(email, password))
+    logIn: (email, password) => dispatch(actionCreators.logIn(email, password)),
+    setPreviousRoute: payload => dispatch(actionCreators.setPreviousRoute(payload))
   };
 };
 

@@ -2,7 +2,7 @@ export { updateDayOff, updateSchedule, removeDayOff, removeSchedule, setColor } 
 
 export { toogleEmployee } from "./employees";
 
-export { previousMonth, nextMonth, previousYear, nextYear, hoverDay, toggleMondaySelection, clearChosenMondays, setDraggedType } from "./temporary";
+export { previousMonth, nextMonth, previousYear, nextYear, hoverDay, toggleMondaySelection, clearChosenMondays, setDraggedType, setPreviousRoute } from "./temporary";
 
 // export {getLastUpdate} from "./status";
 

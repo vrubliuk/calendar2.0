@@ -44,3 +44,10 @@ export const setDraggedType = payload => {
   };
 };
 
+export const setPreviousRoute = payload => {
+  return {
+    type: actionTypes.SET_PREVIOUS_ROUTE,
+    payload
+  }
+}
+

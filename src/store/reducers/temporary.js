@@ -6,7 +6,8 @@ const initialState = {
   editorDate: new Date(),
   hoveredDayId: null,
   chosenMondays: [],
-  draggedType: null
+  draggedType: null,
+  previousRoute: null
 };
 
 const previousMonth = (state) => {
@@ -42,6 +43,10 @@ const clearChosenMondays = (state) => {
 const setDraggedType = (state, action) => {
   return updateState(state, { draggedType: action.payload });
 };
+const setPreviousRoute = (state, action) => {
+  return updateState(state, { previousRoute: action.payload });
+};
+
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -61,6 +66,8 @@ const reducer = (state = initialState, action) => {
       return clearChosenMondays(state);
     case actionTypes.SET_DRAGGED_TYPE:
       return setDraggedType(state, action);
+    case actionTypes.SET_PREVIOUS_ROUTE:
+      return setPreviousRoute(state, action);
     default:
       return state;
   }
