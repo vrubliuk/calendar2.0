@@ -20,22 +20,21 @@ import { connect } from "react-redux";
 //   }
 // }
 
-const Main = ({authorized}) => {
+const Main = ({idToken}) => {
   return (
     <Switch>
       <Route exact path="/" component={Calendar} />
-      <Route exact path="/editor" render={() => (authorized ? <Editor /> : <Redirect to="/authentication" />)} />
-      <Route exact path="/employees" render={() => (authorized ? <Employees /> : <Redirect to="/authentication" />)} />
+      <Route exact path="/editor" render={() => (idToken ? <Editor /> : <Redirect to="/authentication" />)} />
+      <Route exact path="/employees" render={() => (idToken ? <Employees /> : <Redirect to="/authentication" />)} />
       <Route exact path="/authentication" component={Authentication} />
       <Redirect to="/" />
     </Switch>
   );
 }
 
-
 const mapStateToProps = state => {
   return {
-    authorized: state.authorization.authorized
+    idToken: state.authorization.idToken
   };
 };
 

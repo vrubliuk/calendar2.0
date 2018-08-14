@@ -8,4 +8,4 @@ export { previousMonth, nextMonth, previousYear, nextYear, hoverDay, toggleMonda
 
 export {fetchDatabase } from "./combined";
 
-export {logIn} from "./authorization"
+export {logIn, updateAuthData} from "./authorization"

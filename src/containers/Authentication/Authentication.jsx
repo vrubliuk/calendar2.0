@@ -21,6 +21,10 @@ class Authentication extends Component {
     this.props.logIn(this.state.email, this.state.password);
   };
 
+  componentDidUpdate() {
+    if (this.props.idToken) this.props.history.goBack()
+  }
+ 
   render() {
     const errorMessage = this.props.error ? <div className="Authentication__Error">Incorrect email address or password</div> : null;
     return (
@@ -46,7 +50,8 @@ class Authentication extends Component {
 
 const mapStateToProps = state => {
   return {
-    error: state.authorization.error
+    error: state.authorization.error,
+    idToken: state.authorization.idToken
   };
 };
 

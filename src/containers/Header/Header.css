@@ -13,9 +13,13 @@
   align-items: center;
 }
 
-.Header__Right .LastUpdate, .Header__Right .SavingIndicator {
+.Header__Right > * {
+  margin-left: 10px;
+} 
+
+/* .Header__Right .LastUpdate, .Header__Right .SavingIndicator {
   margin-right: 20px;
-}
+} */
 
 
 .Header button {
