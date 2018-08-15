@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actionCreators from "../../store/actions/actionCreators";
 
-const LogButton = ({ history, idToken, updateAuthData }) => {
+const LogButton = ({ history, location, idToken, updateAuthData, setPreviousRoute }) => {
   const text = idToken ? "Log out" : "Log in";
 
   const handleClickLogIn = () => {
@@ -12,7 +12,8 @@ const LogButton = ({ history, idToken, updateAuthData }) => {
   };
   const handleClickLogOut = () => {
     updateAuthData(null, null, null);
-    history.push("/");
+    setPreviousRoute(location.pathname)
+    history.push("/authentication");
   };
   const handleClick = idToken ? handleClickLogOut : handleClickLogIn;
 
@@ -31,7 +32,8 @@ const mapStateToProps = state => {
 
 const mapDispatch = dispatch => {
   return {
-    updateAuthData: (idToken, localId, refreshToken) => dispatch(actionCreators.updateAuthData(idToken, localId, refreshToken))
+    updateAuthData: (idToken, localId, refreshToken) => dispatch(actionCreators.updateAuthData(idToken, localId, refreshToken)),
+    setPreviousRoute: payload => dispatch(actionCreators.setPreviousRoute(payload))
   };
 };
 
