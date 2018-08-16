@@ -47,7 +47,7 @@ const Details = ({ hoveredDayId, days }) => {
         </div>
       ) : null;
   } else if (hoveredDayId) {
-    warningMessage = <div className="Details__Item Details__Item-WarningMessage">Nothing has been scheduled for this day yet :(</div>;
+    warningMessage = <div className="Details__Item Details__Item-WarningMessage">Nothing has been scheduled for this day yet</div>;
   }
 
   return (
