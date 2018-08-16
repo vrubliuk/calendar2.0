@@ -4,7 +4,6 @@ import { updateState } from "../utility/updateState";
 const initialState = {
   authorized: false,
   idToken: null,
-  localId: null,
   refreshToken: null,
   error: false
 };
@@ -13,7 +12,6 @@ const updateAuthData = (state, action) => {
   return updateState(state, { 
     authorized: true,
     idToken: action.idToken,
-    localId: action.localId,
     refreshToken: action.refreshToken,
    });
 };

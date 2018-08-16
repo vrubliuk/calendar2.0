@@ -1,11 +1,10 @@
 import * as actionTypes from "./actionTypes";
 import * as API from "../utility/API";
 
-export const updateAuthData = (idToken, localId, refreshToken) => {
+export const updateAuthData = (idToken, refreshToken) => {
   return {
     type: actionTypes.UPDATE_AUTH_DATA,
     idToken,
-    localId,
     refreshToken
   };
 };
@@ -21,7 +20,8 @@ export const logIn = (email, password) => {
     API.postEmailPassword(email, password).then(
       res => {
         console.log(res);
-        dispatch(updateAuthData(res.data.idToken, res.data.localId, res.data.refreshToken));
+        dispatch(updateAuthData(res.data.idToken, res.data.refreshToken));
+        
       },
       () => {
         dispatch(toggleError());
