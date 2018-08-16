@@ -32,6 +32,12 @@ export const toggleMondaySelection = (id, type) => {
     payload: { id, type }
   };
 };
+export const removeMondayFromChosenMondays = (id, type) => {
+  return {
+    type: actionTypes.REMOVE_MONDAY_FROM_CHOSEN_MONDAYS,
+    payload: { id, type }
+  };
+}
 export const clearChosenMondays = () => {
   return {
     type: actionTypes.CLEAR_CHOSEN_MONDAYS

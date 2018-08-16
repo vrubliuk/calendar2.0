@@ -10,19 +10,19 @@ const initialState = {
   previousRoute: null
 };
 
-const previousMonth = (state) => {
+const previousMonth = state => {
   return updateState(state, { calendarDate: new Date(state.calendarDate.setMonth(state.calendarDate.getMonth() - 1)) });
 };
-const nextMonth = (state) => {
+const nextMonth = state => {
   return updateState(state, { calendarDate: new Date(state.calendarDate.setMonth(state.calendarDate.getMonth() + 1)) });
 };
 const hoverDay = (state, action) => {
   return updateState(state, { hoveredDayId: action.id });
 };
-const previousYear = (state) => {
+const previousYear = state => {
   return updateState(state, { editorDate: new Date(state.editorDate.setFullYear(state.editorDate.getFullYear() - 1)) });
 };
-const nextYear = (state) => {
+const nextYear = state => {
   return updateState(state, { editorDate: new Date(state.editorDate.setFullYear(state.editorDate.getFullYear() + 1)) });
 };
 const toggleMondaySelection = (state, action) => {
@@ -37,7 +37,15 @@ const toggleMondaySelection = (state, action) => {
   index > -1 ? chosenMondays.splice(index, 1) : chosenMondays.push(passedMonday);
   return updateState(state, { chosenMondays });
 };
-const clearChosenMondays = (state) => {
+const removeMondayFromChosenMondays = (state, action) => {
+  let chosenMondays = [...state.chosenMondays];
+  const index = chosenMondays.findIndex(monday => {
+    return monday.id === action.payload.id && monday.type === action.payload.type;
+  });
+  chosenMondays.splice(index, 1);
+  return updateState(state, { chosenMondays });
+};
+const clearChosenMondays = state => {
   return updateState(state, { chosenMondays: [] });
 };
 const setDraggedType = (state, action) => {
@@ -46,7 +54,6 @@ const setDraggedType = (state, action) => {
 const setPreviousRoute = (state, action) => {
   return updateState(state, { previousRoute: action.payload });
 };
-
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -62,6 +69,8 @@ const reducer = (state = initialState, action) => {
       return nextYear(state);
     case actionTypes.TOGGLE_MONDAY_SELECTION:
       return toggleMondaySelection(state, action);
+    case actionTypes.REMOVE_MONDAY_FROM_CHOSEN_MONDAYS:
+      return removeMondayFromChosenMondays(state, action);
     case actionTypes.CLEAR_CHOSEN_MONDAYS:
       return clearChosenMondays(state);
     case actionTypes.SET_DRAGGED_TYPE:

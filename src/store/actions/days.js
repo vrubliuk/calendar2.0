@@ -1,6 +1,7 @@
 import * as actionTypes from "./actionTypes";
 import * as API from "../utility/API";
 import { setLastUpdate, showSavingIndicator, hideSavingIndicator } from "./status";
+import { removeMondayFromChosenMondays } from "./temporary";
 
 export const updateDays = daysWithChanges => {
   return {
@@ -155,6 +156,7 @@ export const updateSchedule = (id, type, name) => {
 export const removeSchedule = (id, detailType) => {
   return (dispatch, getState) => {
     dispatch(showSavingIndicator());
+    dispatch(removeMondayFromChosenMondays(id, detailType));
     const token = getState().authorization.idToken;
     const oldDays = getState().days.days;
     const oldChosenDays = {};
