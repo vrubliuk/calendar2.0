@@ -35,14 +35,12 @@ input {
   user-select: auto;
 }
 
+input::-ms-clear {
+  display: none;
+}
 
 a {
   text-decoration: none;
-  /* position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0; */
 }
 
 .Loader {

@@ -8,7 +8,7 @@ import { colors } from "../../assets/colors";
 const Basket = ({ type, employees }) => {
   const employeesList = employees.map((name, i) => <Employee name={name} type={type} key={i} />);
   const colorsList = Object.keys(colors).map((name, i) => <Color name={name} key={i} />);
-  const placeholder = type !== "color" && !employees.length ? <div className="Basket__Placeholder">Your employees list is empty :(</div> : null;
+  const placeholder = type !== "color" && !employees.length ? <div className="Basket__Placeholder">Your employees list is empty</div> : null;
 
   let headerText = null;
   let additionalClass = "";
@@ -19,19 +19,16 @@ const Basket = ({ type, employees }) => {
       headerText = "Confirmed day off";
       additionalClass = "Basket-ConfirmedDayOff";
       content = employeesList;
-     
       break;
     case "pendingDayOff":
       headerText = "Pending day off";
       additionalClass = "Basket-PendingDayOff";
       content = employeesList;
-     
       break;
     case "schedule":
       headerText = "Morning shift / Shared inbox / Audit";
       additionalClass = "Basket-Schedule";
       content = employeesList;
-     
       break;
     case "color":
       headerText = "Color picker";
