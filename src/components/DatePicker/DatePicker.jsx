@@ -2,7 +2,7 @@ import React from "react";
 import "./DatePicker.css";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import * as actionCreators from "../../store/actions/actionCreators"
+import * as actionCreators from "../../store/actions/actionCreators";
 
 const DatePicker = ({ calendarDate, editorDate, location, handleClickButtonPreviousMonth, handleClickButtonNextMonth, handleClickButtonPreviousYear, handleClickButtonNextYear }) => {
   const currentRoute = location.pathname;
@@ -32,19 +32,15 @@ const DatePicker = ({ calendarDate, editorDate, location, handleClickButtonPrevi
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
-    calendarDate:state.temporary.calendarDate,
+    calendarDate: state.temporary.calendarDate,
     editorDate: state.temporary.editorDate
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    // handleClickButtonPreviousMonth: () => dispatch({ type: actionTypes.PREVIOUS_MONTH }),
-    // handleClickButtonNextMonth: () => dispatch({ type: actionTypes.NEXT_MONTH }),
-    // handleClickButtonPreviousYear: () => dispatch({ type: actionTypes.PREVIOUS_YEAR }),
-    // handleClickButtonNextYear: () => dispatch({ type: actionTypes.NEXT_YEAR })
     handleClickButtonPreviousMonth: () => dispatch(actionCreators.previousMonth()),
     handleClickButtonNextMonth: () => dispatch(actionCreators.nextMonth()),
     handleClickButtonPreviousYear: () => dispatch(actionCreators.previousYear()),

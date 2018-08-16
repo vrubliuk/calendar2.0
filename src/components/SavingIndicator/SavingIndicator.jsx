@@ -4,7 +4,7 @@ import "./SavingIndicator.css";
 const SavingIndicator = () => {
   return (
     <div className="SavingIndicator">
-      <div className="Loader"></div>
+      <div className="Loader" />
       <div>Saving changes</div>
     </div>
   );

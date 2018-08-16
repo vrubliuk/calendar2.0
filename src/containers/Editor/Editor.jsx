@@ -19,15 +19,13 @@ const Editor = ({ chosenMondays }) => {
   return (
     <div className="Editor">
       <ExtendedView />
-      <div className="Editor__Baskets">
-        {baskets}
-      </div>
+      <div className="Editor__Baskets">{baskets}</div>
       <Details />
     </div>
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     chosenMondays: state.temporary.chosenMondays
   };

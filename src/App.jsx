@@ -34,9 +34,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {/* <Header />
-       <Main />
-       <Spinner/> */}
         {!this.props.spinner ? (
           <React.Fragment>
             <Header />

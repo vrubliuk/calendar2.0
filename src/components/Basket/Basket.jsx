@@ -13,7 +13,7 @@ const Basket = ({ type, employees }) => {
   let headerText = null;
   let additionalClass = "";
   let content = null;
-  
+
   switch (type) {
     case "confirmedDayOff":
       headerText = "Confirmed day off";
@@ -39,11 +39,13 @@ const Basket = ({ type, employees }) => {
       break;
   }
 
-
   return (
     <div className={`Basket ${additionalClass}`}>
       <div className="Basket__Header">{headerText}</div>
-      <div className="Basket__Body">{content}{placeholder}</div>
+      <div className="Basket__Body">
+        {content}
+        {placeholder}
+      </div>
       <div className="Basket__Footer" />
     </div>
   );

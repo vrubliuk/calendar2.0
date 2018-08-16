@@ -6,7 +6,11 @@ import { connect } from "react-redux";
 
 const CompactView = ({ calendarDate }) => {
   const week = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"];
-  const header = week.map((day, i) => <div className='CompactView__Header' key={i}>{day}</div>);
+  const header = week.map((day, i) => (
+    <div className="CompactView__Header" key={i}>
+      {day}
+    </div>
+  ));
   const year = calendarDate.getFullYear();
   const month = calendarDate.getMonth();
   const firstDayIndexInWeek = new Date(year, month, 1).getDay();
@@ -24,7 +28,7 @@ const CompactView = ({ calendarDate }) => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     calendarDate: state.temporary.calendarDate
   };

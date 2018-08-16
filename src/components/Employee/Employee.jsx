@@ -1,7 +1,7 @@
 import React from "react";
 import "./Employee.css";
 import { connect } from "react-redux";
-import * as actionCreators from "../../store/actions/actionCreators"
+import * as actionCreators from "../../store/actions/actionCreators";
 
 const Employee = ({ name, type, setDraggedType }) => {
   let additionalClass = "";
@@ -20,7 +20,7 @@ const Employee = ({ name, type, setDraggedType }) => {
   }
 
   const handleDragStart = e => {
-    e.dataTransfer.setData("text", JSON.stringify({name, type}) );
+    e.dataTransfer.setData("text", JSON.stringify({ name, type }));
     e.dropEffect = "copy";
     setDraggedType(type);
   };
@@ -36,7 +36,6 @@ const Employee = ({ name, type, setDraggedType }) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    // setDraggedType: payload => dispatch({ type: actionTypes.SET_DRAGGED_TYPE, payload })
     setDraggedType: payload => dispatch(actionCreators.setDraggedType(payload))
   };
 };

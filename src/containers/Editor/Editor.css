@@ -4,6 +4,7 @@
   height: calc(100% - 60px);
   overflow: hidden;
 }
+
 .Editor__Baskets {
   position: absolute;
   top: 18px;
@@ -14,11 +15,8 @@
   margin-bottom: 20px;
 }
 
-
-
 .Editor .Details {
   position: absolute;
   bottom: 20px;
   right: 20px;
 }
-

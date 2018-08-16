@@ -7,9 +7,9 @@ const initialState = {
   savingIndicator: false
 };
 
-const hideSpinner = (state) => {
+const hideSpinner = state => {
   return updateState(state, { spinner: false });
-}
+};
 
 const setLastUpdate = (state, action) => {
   return updateState(state, { lastUpdate: action.date });
@@ -26,7 +26,7 @@ const hideSavingIndicator = state => {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.HIDE_SPINNER:
-    return hideSpinner(state);
+      return hideSpinner(state);
 
     case actionTypes.SET_LAST_UPDATE:
       return setLastUpdate(state, action);

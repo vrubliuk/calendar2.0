@@ -4,7 +4,7 @@
 }
 
 .Navigation ul {
- margin: 0;
+  margin: 0;
   padding: 0;
   height: 100%;
 }
@@ -27,7 +27,6 @@
   border-top: 5px solid transparent;
   border-bottom: 5px solid transparent;
   padding: 0 10px;
-
 }
 
 .Navigation ul li a:hover {

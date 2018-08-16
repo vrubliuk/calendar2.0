@@ -1,14 +1,11 @@
 .Employees__OuterContainer {
   height: calc(100% - 60px);
   overflow: hidden;
- 
 }
-
 
 .Employees {
   position: relative;
   padding: 60px;
- 
   height: 100%;
   overflow-y: scroll;
   margin-right: -17px;
@@ -17,25 +14,20 @@
 .Employees__InnerContainer {
   width: 400px;
   margin: auto;
-  
 }
 
 .Employees__Header {
-  background: rgb(207, 70, 71);
-  background: rgb(58, 62, 100);
   background: #e6e6e6;
-  /* background: #b3b3b3; */
   height: 60px;
-  padding: 0 10px; 
+  padding: 0 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.Employees__Header input{
-  width: calc(100% - 66px)
+.Employees__Header input {
+  width: calc(100% - 66px);
 }
-
 
 .Employees__Button {
   background: rgb(207, 70, 71);
@@ -47,17 +39,16 @@
 .Employees__Button-Active {
   cursor: pointer;
 }
+
 .Employees__Button-Active:hover {
   box-shadow: 0 0 8px rgb(207, 70, 71);
 }
-
 
 .Employees__Item {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background:#e6e6e6;
-  /* background: #b3b3b3; */
+  background: #e6e6e6;
   margin-top: 10px;
   height: 60px;
   transition: 0.2s;
@@ -74,6 +65,5 @@
 }
 
 .Employees__Item__Name {
-  margin-left: 15px; 
+  margin-left: 15px;
 }
-

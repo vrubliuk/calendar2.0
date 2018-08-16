@@ -1,7 +1,7 @@
 import React from "react";
 import "./Remover.css";
 import { connect } from "react-redux";
-import * as actionCreators from "../../store/actions/actionCreators"
+import * as actionCreators from "../../store/actions/actionCreators";
 
 const Remover = ({ type, id, detailType, employeeIndex, removeDayOff, removeSchedule, toogleEmployee }) => {
   let additionalClass = "";
@@ -24,7 +24,6 @@ const Remover = ({ type, id, detailType, employeeIndex, removeDayOff, removeSche
       additionalClass = "Remover-Employee";
       remove = toogleEmployee.bind(this, "remove", null, employeeIndex);
       break;
-
     default:
       break;
   }
@@ -43,9 +42,6 @@ const Remover = ({ type, id, detailType, employeeIndex, removeDayOff, removeSche
 
 const mapDispatchToProps = dispatch => {
   return {
-    // removeDayOff: id => dispatch({ type: actionTypes.REMOVE_DAYOFF, id }),
-    // removeSchedule: (id, detailType) => dispatch({ type: actionTypes.REMOVE_SCHEDULE, payload: { id, detailType } }),
-    // removeEmployee: employeeIndex => dispatch({ type: actionTypes.REMOVE_EMPLOYEE, employeeIndex })
     removeDayOff: id => dispatch(actionCreators.removeDayOff(id)),
     removeSchedule: (id, detailType) => dispatch(actionCreators.removeSchedule(id, detailType)),
     toogleEmployee: (action, employeeName, employeeIndex) => dispatch(actionCreators.toogleEmployee(action, employeeName, employeeIndex))

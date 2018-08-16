@@ -15,14 +15,14 @@ const Details = ({ hoveredDayId, days }) => {
       "confirmedDayOff" in days[hoveredDayId] ? (
         <div className="Details__Item Details__Item-ConfirmedDayOff">
           <div>Confirmed day off:</div>
-          <div>{days[hoveredDayId]["confirmedDayOff"].join(', ')}</div>
+          <div>{days[hoveredDayId]["confirmedDayOff"].join(", ")}</div>
         </div>
       ) : null;
     pendingDayOffDetails =
       "pendingDayOff" in days[hoveredDayId] ? (
         <div className="Details__Item Details__Item-PendingDayOff">
           <div>Pending day off:</div>
-          <div>{days[hoveredDayId]["pendingDayOff"].join(', ')}</div>
+          <div>{days[hoveredDayId]["pendingDayOff"].join(", ")}</div>
         </div>
       ) : null;
     morningShiftDetails =
@@ -62,7 +62,7 @@ const Details = ({ hoveredDayId, days }) => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     hoveredDayId: state.temporary.hoveredDayId,
     days: state.days.days

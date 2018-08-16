@@ -7,4 +7,4 @@ Used technologies:
 - Axios
 - Firebase
 
-Available soon
+Available here: https://vrubliuk.github.io/calendar2.0

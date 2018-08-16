@@ -1,6 +1,6 @@
 @font-face {
   font-family: open-sans;
-  src: url('./assets/fonts/OpenSans-Regular.ttf');
+  src: url("./assets/fonts/OpenSans-Regular.ttf");
 }
 
 * {
@@ -54,6 +54,7 @@ a {
   animation: load 1s infinite linear;
   transform: translateZ(0);
 }
+
 @-webkit-keyframes load {
   0%,
   100% {
@@ -81,6 +82,7 @@ a {
     box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
   }
 }
+
 @keyframes load {
   0%,
   100% {

@@ -21,17 +21,19 @@ class Navigation extends Component {
   };
 
   render() {
-    const tabs = this.state.tabs.map(tab => <li key={tab.name}><NavLink exact to={tab.path} key={tab.name}>{tab.name}</NavLink></li>);
+    const tabs = this.state.tabs.map(tab => (
+      <li key={tab.name}>
+        <NavLink exact to={tab.path} key={tab.name}>
+          {tab.name}
+        </NavLink>
+      </li>
+    ));
     return (
       <nav className="Navigation">
-        <ul>
-          {tabs}
-        </ul>
+        <ul>{tabs}</ul>
       </nav>
     );
   }
 }
 
 export default Navigation;
-
-

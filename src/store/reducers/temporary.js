@@ -13,18 +13,23 @@ const initialState = {
 const previousMonth = state => {
   return updateState(state, { calendarDate: new Date(state.calendarDate.setMonth(state.calendarDate.getMonth() - 1)) });
 };
+
 const nextMonth = state => {
   return updateState(state, { calendarDate: new Date(state.calendarDate.setMonth(state.calendarDate.getMonth() + 1)) });
 };
+
 const hoverDay = (state, action) => {
   return updateState(state, { hoveredDayId: action.id });
 };
+
 const previousYear = state => {
   return updateState(state, { editorDate: new Date(state.editorDate.setFullYear(state.editorDate.getFullYear() - 1)) });
 };
+
 const nextYear = state => {
   return updateState(state, { editorDate: new Date(state.editorDate.setFullYear(state.editorDate.getFullYear() + 1)) });
 };
+
 const toggleMondaySelection = (state, action) => {
   let chosenMondays = [...state.chosenMondays];
   const passedMonday = {
@@ -37,6 +42,7 @@ const toggleMondaySelection = (state, action) => {
   index > -1 ? chosenMondays.splice(index, 1) : chosenMondays.push(passedMonday);
   return updateState(state, { chosenMondays });
 };
+
 const removeMondayFromChosenMondays = (state, action) => {
   let chosenMondays = [...state.chosenMondays];
   const index = chosenMondays.findIndex(monday => {
@@ -45,12 +51,15 @@ const removeMondayFromChosenMondays = (state, action) => {
   chosenMondays.splice(index, 1);
   return updateState(state, { chosenMondays });
 };
+
 const clearChosenMondays = state => {
   return updateState(state, { chosenMondays: [] });
 };
+
 const setDraggedType = (state, action) => {
   return updateState(state, { draggedType: action.payload });
 };
+
 const setPreviousRoute = (state, action) => {
   return updateState(state, { previousRoute: action.payload });
 };

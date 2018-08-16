@@ -7,9 +7,9 @@ const initialState = {
 };
 
 const updateAuthData = (state, action) => {
-  return updateState(state, { 
-    idToken: action.idToken,
-   });
+  return updateState(state, {
+    idToken: action.idToken
+  });
 };
 
 const toggleError = state => {

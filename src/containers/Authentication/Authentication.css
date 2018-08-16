@@ -10,7 +10,6 @@
   width: 400px;
   display: flex;
   flex-direction: column;
-  
 }
 
 .Authentication__Header {
@@ -29,14 +28,13 @@
 
 .Authentication__Label {
   text-align: left;
-  
   margin: 10px 0;
 }
+
 .Authentication__Input {
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
- 
 }
 
 .Authentication__Error {
@@ -55,4 +53,3 @@
 .Authentication__Button:hover {
   box-shadow: 0 0 8px rgb(207, 70, 71);
 }
-

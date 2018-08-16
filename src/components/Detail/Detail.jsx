@@ -2,8 +2,8 @@ import React from "react";
 import "./Detail.css";
 import { connect } from "react-redux";
 import Remover from "../Remover/Remover.jsx";
-import * as actionCreators from "../../store/actions/actionCreators"
-import {colors} from "../../assets/colors"
+import * as actionCreators from "../../store/actions/actionCreators";
+import { colors } from "../../assets/colors";
 
 const Detail = ({ id, type, days, chosenMondays, draggedType, handleDataTransfer, handleMondaySelection }) => {
   const infoExists = id in days && type in days[id];
@@ -37,7 +37,7 @@ const Detail = ({ id, type, days, chosenMondays, draggedType, handleDataTransfer
       e.preventDefault();
     };
     handleDrop = e => {
-      const name =  JSON.parse(e.dataTransfer.getData("text")).name;
+      const name = JSON.parse(e.dataTransfer.getData("text")).name;
       handleDataTransfer(id, type, name);
     };
   }
@@ -54,7 +54,7 @@ const Detail = ({ id, type, days, chosenMondays, draggedType, handleDataTransfer
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     days: state.days.days,
     chosenMondays: state.temporary.chosenMondays,
@@ -63,10 +63,8 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = dispatch => {
   return {
-    // handleDataTransfer: (id, type, name) => dispatch({ type: actionTypes.UPDATE_SCHEDULE, payload: { id, type, name } }),
-    // handleMondaySelection: (id, type) => dispatch({ type: actionTypes.TOGGLE_MONDAY_SELECTION, payload: { id, type } })
-    handleDataTransfer: (id, type, name) => dispatch( actionCreators.updateSchedule(id, type, name)  ),
-    handleMondaySelection: (id, type) => dispatch( actionCreators.toggleMondaySelection(id, type) )
+    handleDataTransfer: (id, type, name) => dispatch(actionCreators.updateSchedule(id, type, name)),
+    handleMondaySelection: (id, type) => dispatch(actionCreators.toggleMondaySelection(id, type))
   };
 };
 

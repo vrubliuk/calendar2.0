@@ -1,7 +1,7 @@
 import * as actionTypes from "./actionTypes";
 import * as API from "../utility/API";
 
-export const updateAuthData = (idToken) => {
+export const updateAuthData = idToken => {
   return {
     type: actionTypes.UPDATE_AUTH_DATA,
     idToken

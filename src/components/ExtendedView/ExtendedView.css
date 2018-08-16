@@ -18,15 +18,16 @@
   display: flex;
   position: absolute;
   z-index: 2;
-  /* width: 1000px; */
   font-size: 0.9rem;
 }
+
 .ExtendedView__Header__Column,
 .ExtendedView__Body__Column {
   display: flex;
   flex-wrap: wrap;
   margin-right: 10px;
 }
+
 .ExtendedView__Header__Column:last-child,
 .ExtendedView__Body__Column:last-child {
   margin-right: 0;
@@ -38,7 +39,6 @@
   padding: 0 2px;
   border: 2px solid white;
   border-bottom: 4px solid white;
-  /* line-height: 25px; */
 }
 
 .ExtendedView__Header__Month {
@@ -55,13 +55,12 @@
 .ExtendedView__Header__Details {
   background: rgb(123, 92, 68);
   background: rgb(207, 70, 71);
-  /* background: rgb(58, 62, 100); */
   width: 164px;
 }
+
 .ExtendedView__Body {
   display: flex;
   margin-top: 26px;
-  /* width: 1020px; */
 }
 
 .ExtendedView__Body__Column-Month {
@@ -85,7 +84,6 @@
   left: 0;
   right: 0;
   background: rgb(207, 70, 71);
-  /* background: rgb(58, 62, 100); */
-  border-top:4px solid white;
+  border-top: 4px solid white;
   z-index: 3;
 }

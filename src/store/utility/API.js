@@ -2,11 +2,11 @@ import axios from "axios";
 
 export const getDays = () => {
   return axios.get("https://calendar-0002.firebaseio.com/days.json");
-}
+};
 
 export const patchDays = (token, days) => {
   return axios.patch(`https://calendar-0002.firebaseio.com/days.json?auth=${token}`, days);
-}
+};
 
 export const getEmployees = () => {
   return axios.get("https://calendar-0002.firebaseio.com/employees.json");
@@ -25,9 +25,9 @@ export const putLastUpdate = (token, date) => {
 };
 
 export const postEmailPassword = (email, password) => {
-  return axios.post("https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyDvnj1qm12fGIGWGsttWoMgHK254xT0nyw", {email, password, returnSecureToken: true})
-}
+  return axios.post("https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyDvnj1qm12fGIGWGsttWoMgHK254xT0nyw", { email, password, returnSecureToken: true });
+};
 
 export const postRefreshToken = () => {
-  return axios.post("https://securetoken.googleapis.com/v1/token?key=AIzaSyDvnj1qm12fGIGWGsttWoMgHK254xT0nyw", {grant_type: "refresh_token",  refresh_token: localStorage.refreshToken});
-}
+  return axios.post("https://securetoken.googleapis.com/v1/token?key=AIzaSyDvnj1qm12fGIGWGsttWoMgHK254xT0nyw", { grant_type: "refresh_token", refresh_token: localStorage.refreshToken });
+};
