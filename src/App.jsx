@@ -6,11 +6,31 @@ import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actionCreators from "./store/actions/actionCreators";
 import Spinner from "./components/Spinner/Spinner";
+import { postRefreshToken } from "./store/utility/API";
 
 class App extends Component {
   componentDidMount() {
-    this.props.fetchDatabase();
+    if (localStorage.refreshToken) {
+      postRefreshToken().then(res => {
+        localStorage.refreshToken = res.data.refresh_token;
+        this.props.updateAuthData(res.data.id_token);
+        this.props.fetchDatabase();
+      });
+    } else {
+      this.props.fetchDatabase();
+    }
+    this.interval = setInterval(() => {
+      postRefreshToken().then(res => {
+        localStorage.refreshToken = res.data.refresh_token;
+        this.props.updateAuthData(res.data.id_token);
+      });
+    }, 1800000);
   }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
   render() {
     return (
       <div className="App">
@@ -38,7 +58,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchDatabase: () => dispatch(actionCreators.fetchDatabase())
+    fetchDatabase: () => dispatch(actionCreators.fetchDatabase()),
+    updateAuthData: idToken => dispatch(actionCreators.updateAuthData(idToken))
   };
 };
 

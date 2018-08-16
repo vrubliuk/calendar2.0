@@ -27,3 +27,7 @@ export const putLastUpdate = (token, date) => {
 export const postEmailPassword = (email, password) => {
   return axios.post("https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyDvnj1qm12fGIGWGsttWoMgHK254xT0nyw", {email, password, returnSecureToken: true})
 }
+
+export const postRefreshToken = () => {
+  return axios.post("https://securetoken.googleapis.com/v1/token?key=AIzaSyDvnj1qm12fGIGWGsttWoMgHK254xT0nyw", {grant_type: "refresh_token",  refresh_token: localStorage.refreshToken});
+}

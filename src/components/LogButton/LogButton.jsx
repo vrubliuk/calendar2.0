@@ -11,7 +11,8 @@ const LogButton = ({ history, location, idToken, updateAuthData, setPreviousRout
     history.push("/authentication");
   };
   const handleClickLogOut = () => {
-    updateAuthData(null, null);
+    localStorage.removeItem('refreshToken');
+    updateAuthData(null);
     setPreviousRoute(location.pathname)
     history.push("/authentication");
   };
@@ -32,7 +33,7 @@ const mapStateToProps = state => {
 
 const mapDispatch = dispatch => {
   return {
-    updateAuthData: (idToken, refreshToken) => dispatch(actionCreators.updateAuthData(idToken, refreshToken)),
+    updateAuthData: (idToken) => dispatch(actionCreators.updateAuthData(idToken)),
     setPreviousRoute: payload => dispatch(actionCreators.setPreviousRoute(payload))
   };
 };
