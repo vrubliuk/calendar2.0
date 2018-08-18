@@ -18,7 +18,6 @@ export const logIn = (email, password) => {
   return dispatch => {
     API.postEmailPassword(email, password).then(
       res => {
-        console.log(res);
         localStorage.refreshToken = res.data.refreshToken;
         dispatch(updateAuthData(res.data.idToken));
       },
