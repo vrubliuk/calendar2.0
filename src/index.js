@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App.jsx";
 import registerServiceWorker from "./registerServiceWorker";
-import { HashRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
@@ -27,9 +27,9 @@ const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)))
 
 ReactDOM.render(
   <Provider store={store}>
-    <HashRouter>
+    <BrowserRouter basename="/calendar2.0">
       <App />
-    </HashRouter>
+    </BrowserRouter>
   </Provider>,
   document.getElementById("root")
 );
