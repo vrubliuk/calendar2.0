@@ -1,10 +1,11 @@
-Calendar 2.0 
+Calendar
 
 Used technologies:
 - React
 - React-router
 - Redux
+- Redux-thunk
 - Axios
 - Firebase
 
-Available here: https://vrubliuk.github.io/calendar2.0
+Available here: https://vrubliuk.github.io/calendar
