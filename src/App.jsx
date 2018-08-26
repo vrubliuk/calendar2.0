@@ -20,10 +20,12 @@ class App extends Component {
       this.props.fetchDatabase();
     }
     this.interval = setInterval(() => {
-      postRefreshToken().then(res => {
-        localStorage.refreshToken = res.data.refresh_token;
-        this.props.updateAuthData(res.data.id_token);
-      });
+      if (localStorage.refreshToken) {
+        postRefreshToken().then(res => {
+          localStorage.refreshToken = res.data.refresh_token;
+          this.props.updateAuthData(res.data.id_token);
+        });
+      }
     }, 1800000);
   }
 
