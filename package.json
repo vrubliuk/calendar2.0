@@ -1,6 +1,6 @@
 {
-  "name": "calendar2.0",
-  "homepage": "https://vrubliuk.github.io/calendar2.0",
+  "name": "calendar",
+  "homepage": "https://vrubliuk.github.io/calendar",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

@@ -5,6 +5,7 @@ Used technologies:
 - React-router
 - Redux
 - Redux-thunk
+- Radium
 - Axios
 - Firebase
 
