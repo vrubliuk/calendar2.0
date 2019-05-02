@@ -1,6 +1,7 @@
 import React from "react";
 import "./Details.css";
 import { connect } from "react-redux";
+import dataToString from "../../helpers/dataToString";
 
 const Details = ({ hoveredDayId, days }) => {
   let confirmedDayOffDetails = null;
@@ -29,21 +30,21 @@ const Details = ({ hoveredDayId, days }) => {
       "morningShift" in days[hoveredDayId] ? (
         <div className="Details__Item Details__Item-MorningShift">
           <div>Morning shift:</div>
-          <div>{days[hoveredDayId]["morningShift"]}</div>
+          <div>{dataToString(days[hoveredDayId]["morningShift"])}</div>
         </div>
       ) : null;
     sharedInboxDetails =
       "sharedInbox" in days[hoveredDayId] ? (
         <div className="Details__Item Details__Item-SharedInbox">
           <div>Shared inbox:</div>
-          <div>{days[hoveredDayId]["sharedInbox"]}</div>
+          <div>{dataToString(days[hoveredDayId]["sharedInbox"])}</div>
         </div>
       ) : null;
     auditDetails =
       "audit" in days[hoveredDayId] ? (
         <div className="Details__Item Details__Item-Audit">
           <div>Audit:</div>
-          <div>{days[hoveredDayId]["audit"]}</div>
+          <div>{dataToString(days[hoveredDayId]["audit"])}</div>
         </div>
       ) : null;
   } else if (hoveredDayId) {
