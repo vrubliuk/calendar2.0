@@ -21,7 +21,10 @@ export const updateDayOff = (id, type, name) => {
     const typeExists = idExists && type in oldDays[id];
     let errorsCounter = 0;
     if (typeExists) {
-      if (oldDays[id][type].indexOf(name) > -1) return;
+      if (oldDays[id][type].indexOf(name) > -1) {
+        dispatch(hideSavingIndicator());
+        return;
+      }
       newDay = {
         [id]: {
           ...oldDays[id],
@@ -120,11 +123,24 @@ export const updateSchedule = (id, type, name) => {
       if (currentId in oldDays) {
         oldChosenDays[currentId] = oldDays[currentId];
         newChosenDays[currentId] = JSON.parse(JSON.stringify(oldChosenDays[currentId]));
-        newChosenDays[currentId][type] = name;
+        if (newChosenDays[currentId][type]) {
+          try {
+            if (newChosenDays[currentId][type].includes(name)) {
+              dispatch(hideSavingIndicator());
+              return;
+            }
+            newChosenDays[currentId][type].push(name);
+          } catch (error) {
+            dispatch(hideSavingIndicator());
+            return;
+          }
+        } else {
+          newChosenDays[currentId][type] = [name];
+        }
       } else {
         oldChosenDays[currentId] = {};
         newChosenDays[currentId] = {
-          [type]: name
+          [type]: [name]
         };
       }
     }

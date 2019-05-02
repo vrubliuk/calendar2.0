@@ -4,11 +4,12 @@ import { connect } from "react-redux";
 import Remover from "../Remover/Remover.jsx";
 import * as actionCreators from "../../store/actions/actionCreators";
 import { colors } from "../../assets/colors";
+import dataToString from "../../helpers/dataToString";
 
 const Detail = ({ id, type, days, chosenMondays, draggedType, handleDataTransfer, handleMondaySelection }) => {
   const infoExists = id in days && type in days[id];
   const colorExists = infoExists && "colors" in days[id] && type in days[id].colors;
-  const info = infoExists ? <div className="Detail__Info">{days[id][type]}</div> : null;
+  const info = infoExists ? <div className="Detail__Info">{dataToString(days[id][type])}</div> : null;
 
   const additionalStyleDetail = colorExists
     ? {
