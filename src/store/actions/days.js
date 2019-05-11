@@ -102,7 +102,6 @@ export const removeDayOff = id => {
         },
         () => {
           dispatch(hideSavingIndicator());
-
           errorsCounter ? alert("Can't remove the day off. Please contact the administrator.") : alert("Can't set the date of the last update. Please contact the administrator.");
         }
       );
