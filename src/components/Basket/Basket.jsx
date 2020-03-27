@@ -26,7 +26,7 @@ const Basket = ({ type, employees }) => {
       content = employeesList;
       break;
     case "schedule":
-      headerText = "Morning shift / Shared inbox / Audit";
+      headerText = "Morning shift / Shared inbox / Audit / 3.0 system";
       additionalClass = "Basket-Schedule";
       content = employeesList;
       break;

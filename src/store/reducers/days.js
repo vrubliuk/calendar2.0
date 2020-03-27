@@ -4,12 +4,13 @@ import { updateState } from "../utility/updateState";
 const initialState = {
   days: {
     // THE DATA STRUCTURE
-    // "2018-7-16": {
+    // "2020-7-16": {
     //   confirmedDayOff: ["Uliana", "Oksana"],
-    //   pendingDayOff: ["Yaryna"],
-    //   morningShift: "Oksana",
-    //   sharedInbox: "Yaryna",
-    //   audit: "Nazar",
+    //   pendingDayOff: ["Uliana", "Oksana"],
+    //   morningShift: ["Uliana", "Oksana"],
+    //   sharedInbox: ["Uliana", "Oksana"],
+    //   audit: ["Uliana", "Oksana"],
+    //   system3: ["Uliana", "Oksana"],
     //   colors: {
     //     morningShift: "yellow",
     //     sharedInbox: "green",

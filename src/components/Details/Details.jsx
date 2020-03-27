@@ -9,6 +9,7 @@ const Details = ({ hoveredDayId, days }) => {
   let morningShiftDetails = null;
   let sharedInboxDetails = null;
   let auditDetails = null;
+  let system3Details = null;
   let warningMessage = null;
 
   if (hoveredDayId in days) {
@@ -47,6 +48,13 @@ const Details = ({ hoveredDayId, days }) => {
           <div>{dataToString(days[hoveredDayId]["audit"])}</div>
         </div>
       ) : null;
+    system3Details =
+      "system3" in days[hoveredDayId] ? (
+        <div className="Details__Item Details__Item-System3">
+          <div>3.0 system:</div>
+          <div>{dataToString(days[hoveredDayId]["system3"])}</div>
+        </div>
+      ) : null;
   } else if (hoveredDayId) {
     warningMessage = <div className="Details__Item Details__Item-WarningMessage">Nothing has been scheduled for this day yet</div>;
   }
@@ -58,6 +66,7 @@ const Details = ({ hoveredDayId, days }) => {
       {morningShiftDetails}
       {sharedInboxDetails}
       {auditDetails}
+      {system3Details}
       {warningMessage}
     </div>
   );

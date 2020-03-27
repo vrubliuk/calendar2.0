@@ -20,7 +20,7 @@ const ExtendedView = ({ editorDate }) => {
       {day}
     </div>
   ));
-  const headerDetailsValue = ["Morning shift", "Shared inbox", "Audit"];
+  const headerDetailsValue = ["Morning shift", "Shared inbox", "Audit", "3.0 system"];
   const headerDetails = headerDetailsValue.map((detail, i) => (
     <div className="ExtendedView__Header__Item ExtendedView__Header__Details" key={i}>
       {detail}
@@ -82,6 +82,7 @@ const ExtendedView = ({ editorDate }) => {
         <Detail id={mondayId} type="morningShift" />
         <Detail id={mondayId} type="sharedInbox" />
         <Detail id={mondayId} type="audit" />
+        <Detail id={mondayId} type="system3" />
       </React.Fragment>
     );
   });
@@ -105,12 +106,10 @@ const ExtendedView = ({ editorDate }) => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     editorDate: state.temporary.editorDate
   };
 };
 
-export default connect(
-  mapStateToProps
-)(ExtendedView);
+export default connect(mapStateToProps)(ExtendedView);

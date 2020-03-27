@@ -123,16 +123,11 @@ export const updateSchedule = (id, type, name) => {
         oldChosenDays[currentId] = oldDays[currentId];
         newChosenDays[currentId] = JSON.parse(JSON.stringify(oldChosenDays[currentId]));
         if (newChosenDays[currentId][type]) {
-          try {
-            if (newChosenDays[currentId][type].includes(name)) {
-              dispatch(hideSavingIndicator());
-              return;
-            }
-            newChosenDays[currentId][type].push(name);
-          } catch (error) {
+          if (newChosenDays[currentId][type].includes(name)) {
             dispatch(hideSavingIndicator());
             return;
           }
+          newChosenDays[currentId][type].push(name);
         } else {
           newChosenDays[currentId][type] = [name];
         }

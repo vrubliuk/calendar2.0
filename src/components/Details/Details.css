@@ -19,7 +19,8 @@
 
 .Details__Item-MorningShift,
 .Details__Item-SharedInbox,
-.Details__Item-Audit {
+.Details__Item-Audit,
+.Details__Item-System3 {
   background: rgb(58, 62, 100);
 }
 

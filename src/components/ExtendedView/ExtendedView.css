@@ -1,6 +1,6 @@
 .ExtendedView {
   height: 100%;
-  width: 1000px;
+  width: 1164px;
   overflow: hidden;
   position: relative;
   padding-bottom: 6px;
@@ -10,7 +10,7 @@
 .ExtendedView__InnerContainer {
   display: flex;
   height: 100%;
-  width: 1017px;
+  width: 1181px;
   overflow-x: hidden;
 }
 
@@ -72,13 +72,13 @@
 }
 
 .ExtendedView__Body__Column-Details {
-  width: 492px;
+  width: 656px;
 }
 
 .ExtendedView__Footer {
   position: absolute;
   margin: auto;
-  width: 996px;
+  width: 1160px;
   height: 8px;
   bottom: 0;
   left: 0;
